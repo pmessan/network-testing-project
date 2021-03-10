@@ -1,0 +1,35 @@
+PING edwin-ygg(edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484)) 56 data bytes
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=1 ttl=64 time=54.6 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=2 ttl=64 time=84.7 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=3 ttl=64 time=86.8 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=4 ttl=64 time=160 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=5 ttl=64 time=151 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=6 ttl=64 time=185 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=7 ttl=64 time=33.0 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=8 ttl=64 time=40.1 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=9 ttl=64 time=30.6 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=10 ttl=64 time=51.8 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=11 ttl=64 time=36.6 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=12 ttl=64 time=34.9 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=13 ttl=64 time=116 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=14 ttl=64 time=138 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=15 ttl=64 time=37.2 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=16 ttl=64 time=85.6 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=17 ttl=64 time=109 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=18 ttl=64 time=31.8 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=19 ttl=64 time=29.1 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=20 ttl=64 time=77.2 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=21 ttl=64 time=45.3 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=22 ttl=64 time=39.0 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=23 ttl=64 time=39.1 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=24 ttl=64 time=63.4 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=25 ttl=64 time=287 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=26 ttl=64 time=38.7 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=27 ttl=64 time=46.7 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=28 ttl=64 time=51.8 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=29 ttl=64 time=37.8 ms
+64 bytes from edwin-ygg (200:460a:7697:b3ac:2058:fe41:eed4:f484): icmp_seq=30 ttl=64 time=88.1 ms
+
+--- edwin-ygg ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29046ms
+rtt min/avg/max/mdev = 29.126/76.967/286.914/57.494 ms

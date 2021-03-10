@@ -1,0 +1,7 @@
+------------------------------------------------------------
+Client connecting to gifko-cjdns, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  3] local fc67:2373:2a5e:8531:a1cc:5994:a195:2280 port 46098 connected with fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-32.7 sec  2.00 MBytes   514 Kbits/sec

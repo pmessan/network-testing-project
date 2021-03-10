@@ -1,0 +1,55 @@
+subscribed to [/cv_camera/image_raw/compressed]
+average: 217.85KB/s
+	mean: 35.44KB min: 33.49KB max: 37.16KB window: 7
+average: 268.57KB/s
+	mean: 35.92KB min: 33.49KB max: 37.44KB window: 16
+average: 314.63KB/s
+	mean: 36.60KB min: 33.49KB max: 38.18KB window: 27
+average: 355.93KB/s
+	mean: 36.86KB min: 33.49KB max: 38.18KB window: 40
+average: 360.48KB/s
+	mean: 37.08KB min: 33.49KB max: 41.76KB window: 50
+average: 389.11KB/s
+	mean: 36.78KB min: 33.49KB max: 41.76KB window: 65
+average: 395.03KB/s
+	mean: 36.65KB min: 33.49KB max: 41.76KB window: 77
+average: 390.71KB/s
+	mean: 36.58KB min: 33.49KB max: 41.76KB window: 87
+average: 383.48KB/s
+	mean: 36.54KB min: 33.49KB max: 41.76KB window: 96
+average: 407.88KB/s
+	mean: 36.58KB min: 35.18KB max: 41.76KB window: 100
+average: 396.98KB/s
+	mean: 36.59KB min: 35.18KB max: 41.76KB window: 100
+average: 387.81KB/s
+	mean: 36.47KB min: 35.18KB max: 41.76KB window: 100
+average: 378.69KB/s
+	mean: 36.34KB min: 35.18KB max: 41.76KB window: 100
+average: 350.27KB/s
+	mean: 36.30KB min: 35.18KB max: 41.76KB window: 100
+average: 337.83KB/s
+	mean: 36.30KB min: 35.18KB max: 41.76KB window: 100
+average: 329.74KB/s
+	mean: 36.27KB min: 35.18KB max: 41.26KB window: 100
+average: 317.90KB/s
+	mean: 36.36KB min: 35.18KB max: 41.26KB window: 100
+average: 309.98KB/s
+	mean: 36.50KB min: 35.32KB max: 41.26KB window: 100
+average: 304.85KB/s
+	mean: 36.56KB min: 35.52KB max: 41.26KB window: 100
+average: 309.42KB/s
+	mean: 36.66KB min: 35.52KB max: 41.26KB window: 100
+average: 308.10KB/s
+	mean: 36.76KB min: 35.52KB max: 41.26KB window: 100
+average: 306.23KB/s
+	mean: 36.82KB min: 35.52KB max: 41.26KB window: 100
+average: 315.14KB/s
+	mean: 36.87KB min: 35.52KB max: 41.26KB window: 100
+average: 311.99KB/s
+	mean: 36.87KB min: 34.60KB max: 41.26KB window: 100
+average: 327.14KB/s
+	mean: 36.91KB min: 34.60KB max: 41.26KB window: 100
+average: 344.39KB/s
+	mean: 36.77KB min: 32.97KB max: 40.59KB window: 100
+average: 347.95KB/s
+	mean: 36.64KB min: 32.97KB max: 40.59KB window: 100

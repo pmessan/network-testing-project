@@ -1,0 +1,17 @@
+PING sparus2_ygg(sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b)) 56 data bytes
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=1 ttl=64 time=59.3 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=2 ttl=64 time=57.3 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=3 ttl=64 time=57.5 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=4 ttl=64 time=61.1 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=5 ttl=64 time=59.9 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=6 ttl=64 time=57.8 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=7 ttl=64 time=59.8 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=8 ttl=64 time=60.4 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=9 ttl=64 time=59.1 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=10 ttl=64 time=57.7 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=11 ttl=64 time=62.3 ms
+64 bytes from sparus2_ygg (201:cfeb:e754:756d:506e:3d4f:b4cf:e70b): icmp_seq=12 ttl=64 time=59.4 ms
+
+--- sparus2_ygg ping statistics ---
+12 packets transmitted, 12 received, 0% packet loss, time 11014ms
+rtt min/avg/max/mdev = 57.348/59.310/62.330/1.488 ms

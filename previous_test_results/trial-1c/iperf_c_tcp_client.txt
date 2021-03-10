@@ -1,0 +1,7 @@
+------------------------------------------------------------
+Client connecting to danter-cjdns, TCP port 5001
+TCP window size: 45.0 KByte (default)
+------------------------------------------------------------
+[  6] local fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 38698 connected with fcc2:2d59:f989:23b0:5a57:20fd:6e8b:b049 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  6]  0.0-30.0 sec  3.38 MBytes   942 Kbits/sec

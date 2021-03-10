@@ -1,0 +1,61 @@
+subscribed to [/cv_camera/image_raw/compressed]
+average: 1.11MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 22
+average: 1.14MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 53
+average: 1.14MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 84
+average: 1.12MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.12MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.10MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.08MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.07MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.08MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.08MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.07MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.10MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.10MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.10MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.12MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.12MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.12MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.11MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.08MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.08MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.09MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.08MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 1.06MB/s
+	mean: 0.04MB min: 0.03MB max: 0.04MB window: 100
+average: 902.63KB/s
+	mean: 35.63KB min: 34.92KB max: 35.94KB window: 100

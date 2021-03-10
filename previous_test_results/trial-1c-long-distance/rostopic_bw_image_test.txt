@@ -1,0 +1,55 @@
+subscribed to [/cv_camera/image_raw/compressed]
+average: 59.83KB/s
+	mean: 35.05KB min: 34.36KB max: 35.74KB window: 2
+average: 96.23KB/s
+	mean: 34.85KB min: 33.18KB max: 36.89KB window: 6
+average: 100.99KB/s
+	mean: 35.62KB min: 33.18KB max: 37.30KB window: 9
+average: 94.59KB/s
+	mean: 35.91KB min: 33.18KB max: 37.49KB window: 11
+average: 76.29KB/s
+	mean: 35.91KB min: 33.18KB max: 37.49KB window: 11
+average: 69.93KB/s
+	mean: 36.00KB min: 33.18KB max: 37.49KB window: 12
+average: 65.39KB/s
+	mean: 36.11KB min: 33.18KB max: 37.49KB window: 13
+average: 57.38KB/s
+	mean: 36.11KB min: 33.18KB max: 37.49KB window: 13
+average: 59.23KB/s
+	mean: 36.26KB min: 33.18KB max: 37.53KB window: 15
+average: 60.68KB/s
+	mean: 36.35KB min: 33.18KB max: 37.53KB window: 17
+average: 58.59KB/s
+	mean: 36.41KB min: 33.18KB max: 37.53KB window: 18
+average: 56.85KB/s
+	mean: 36.46KB min: 33.18KB max: 37.53KB window: 19
+average: 58.21KB/s
+	mean: 36.55KB min: 33.18KB max: 37.54KB window: 21
+average: 59.17KB/s
+	mean: 36.50KB min: 33.18KB max: 37.54KB window: 23
+average: 62.53KB/s
+	mean: 36.53KB min: 33.18KB max: 37.54KB window: 26
+average: 63.09KB/s
+	mean: 36.48KB min: 33.18KB max: 37.54KB window: 28
+average: 67.48KB/s
+	mean: 36.25KB min: 32.97KB max: 37.54KB window: 32
+average: 73.36KB/s
+	mean: 36.07KB min: 32.60KB max: 37.54KB window: 37
+average: 78.49KB/s
+	mean: 35.87KB min: 32.60KB max: 37.54KB window: 42
+average: 82.95KB/s
+	mean: 35.64KB min: 32.29KB max: 37.54KB window: 47
+average: 79.03KB/s
+	mean: 35.64KB min: 32.29KB max: 37.54KB window: 47
+average: 80.14KB/s
+	mean: 35.58KB min: 32.29KB max: 37.54KB window: 50
+average: 79.80KB/s
+	mean: 35.60KB min: 32.29KB max: 37.54KB window: 52
+average: 80.95KB/s
+	mean: 35.62KB min: 32.29KB max: 37.54KB window: 55
+average: 83.44KB/s
+	mean: 35.64KB min: 32.29KB max: 37.54KB window: 59
+average: 84.39KB/s
+	mean: 35.67KB min: 32.29KB max: 37.54KB window: 62
+average: 82.63KB/s
+	mean: 35.68KB min: 32.29KB max: 37.54KB window: 63

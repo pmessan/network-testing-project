@@ -1,0 +1,44 @@
+------------------------------------------------------------
+Client connecting to gifko-ygg, UDP port 5001
+Sending 1450 byte datagrams, IPG target: 11062.62 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:6f3f:1f2a:47b7:a498:6f27:28a4:395f port 52180 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec
+[  3] Sent 2712 datagrams
+[  3] Server Report:
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec   6.358 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Client connecting to gifko-ygg, UDP port 5001
+Sending 1450 byte datagrams, IPG target: 11062.62 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:6f3f:1f2a:47b7:a498:6f27:28a4:395f port 37653 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec
+[  3] Sent 2712 datagrams
+[  3] Server Report:
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec   8.476 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Client connecting to gifko-ygg, UDP port 5001
+Sending 1450 byte datagrams, IPG target: 11062.62 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:6f3f:1f2a:47b7:a498:6f27:28a4:395f port 37063 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec
+[  3] Sent 2712 datagrams
+[  3] Server Report:
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec   4.171 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Client connecting to gifko-cjdns, UDP port 5001
+Sending 1450 byte datagrams, IPG target: 11062.62 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local fcc2:2d59:f989:23b0:5a57:20fd:6e8b:b049 port 39785 connected with fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec
+[  3] Sent 2712 datagrams
+[  3] Server Report:
+[  3]  0.0-30.3 sec  3.53 MBytes   976 Kbits/sec   2.953 ms  162/ 2712 (6%)

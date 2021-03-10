@@ -1,0 +1,63 @@
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:460a:7697:b3ac:2058:fe41:eed4:f484 port 5001 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 47956
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec   3.282 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:460a:7697:b3ac:2058:fe41:eed4:f484 port 5001 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 60431
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-30.1 sec  3.75 MBytes  1.05 Mbits/sec  16.216 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:460a:7697:b3ac:2058:fe41:eed4:f484 port 5001 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 47953
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-29.7 sec  3.75 MBytes  1.06 Mbits/sec  13.120 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local fc67:2373:2a5e:8531:a1cc:5994:a195:2280 port 5001 connected with fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 41683
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-30.0 sec  1.45 MBytes   405 Kbits/sec   3.968 ms 1664/ 2712 (61%)
+[  3] 0.0000-30.0347 sec  60 datagrams received out-of-order
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local fc67:2373:2a5e:8531:a1cc:5994:a195:2280 port 5001 connected with fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 39147
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:460a:7697:b3ac:2058:fe41:eed4:f484 port 5001 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 55781
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-30.6 sec  3.75 MBytes  1.03 Mbits/sec   8.346 ms    0/ 2712 (0%)
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local fc67:2373:2a5e:8531:a1cc:5994:a195:2280 port 5001 connected with fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 59704
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-30.5 sec  3.61 MBytes   994 Kbits/sec  11.388 ms  102/ 2712 (3.8%)
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 200:460a:7697:b3ac:2058:fe41:eed4:f484 port 5001 connected with 200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b port 52781
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  3]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec   1.664 ms    0/ 2712 (0%)

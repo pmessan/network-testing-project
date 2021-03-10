@@ -1,0 +1,12 @@
+------------------------------------------------------------
+Client connecting to danter, UDP port 5001
+Sending 1450 byte datagrams, IPG target: 11062.62 us (kalman adjust)
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  6] local fc94:e814:48dc:7a65:e0f0:228:6ba7:9a39 port 60627 connected with fc94:a508:31eb:5df0:77d3:5bf3:afa6:ec27 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  6]  0.0-30.0 sec  3.75 MBytes  1.05 Mbits/sec
+[  6] Sent 2712 datagrams
+[  6] Server Report:
+[  6]  0.0-30.0 sec  3.60 MBytes  1.01 Mbits/sec   5.034 ms  108/ 2712 (4%)
+[  6] 0.0000-30.0177 sec  3 datagrams received out-of-order

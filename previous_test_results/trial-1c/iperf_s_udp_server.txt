@@ -1,0 +1,8 @@
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  6] local fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 5001 connected with fcc2:2d59:f989:23b0:5a57:20fd:6e8b:b049 port 39785
+[ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+[  6]  0.0-30.3 sec  3.53 MBytes   976 Kbits/sec   2.953 ms  162/ 2712 (6%)
