@@ -38,7 +38,7 @@ def autolabel(rects):
 data = pd.read_csv(_ + '/../trials/tryme.csv')
 data2 = pd.read_csv(_ + '/../trials/tryme2.csv')
 
-ax = plt.subplot(111)
+ax = plt.subplot(111, label="iperf")
 
 # compute averages and plot those
 A = list(data['bits_per_second'])
@@ -89,7 +89,7 @@ C_min = [min_c, 0, 0, 0, 0, 0]
 C_max = [max_c, 0, 0, 0, 0, 0]
 C_avg = [avg_c, 0, 0, 0, 0, 0]
 
-ax = plt.subplot(111)
+ax = plt.subplot(111, label="ping")
 
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
@@ -128,7 +128,7 @@ avg_D = sum(D)/len(D)
 U_all = [avg_U, 0, 0, 0, 0, 0]
 D_all = [avg_D, 0, 0, 0, 0, 0]
 
-ax = plt.subplot(111)
+ax = plt.subplot(111, label="ssh")
 
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
