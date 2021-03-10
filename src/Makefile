@@ -15,7 +15,7 @@ run: venv
 	./$(VENV)/bin/python3 plotscript.py 
 
 clean:
-	rm -rf $(VENV)
+	sudo rm -rf $(VENV)/
 	find . -type f -name '*.pyc' -delete
 
 .PHONY: all venv run clean
