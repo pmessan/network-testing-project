@@ -1,13 +1,26 @@
 #!/usr/bin/python3
 import matplotlib.pyplot as plt
 import pandas as pd
-import os.path
+import os
+import argparse
 
 """
 Setup
 """
 
+parser = argparse.ArgumentParser(
+    prog="./plotscript", description='Plot the results of the tests performed in network-test-script.sh')
+parser.add_argument(
+    "-p", "--path", help="Path relative to folder with input CSV files for the graphs.")
+args = parser.parse_args()
+path = args.path
+
+fileList = os.listdir(path)
+
+
 # create array for the methods to map to numbers
+
+print("Setting up...") 
 
 methods = ["Yggdrasil", "CJDNS", "Husarnet",
            "Port Forwarding", "Wireguard", "Proxy Server"]
@@ -32,118 +45,210 @@ def autolabel(rects):
                     ha='center', va='bottom')
 
 
+iperf_servers = []
+iperf_clients = []
+min_ping = []
+max_ping = []
+avg_ping = []
+ssh_upload = []
+ssh_download = []
+
+
+print("Setup complete.\n Generating iperf TCP chart...")
+
 ###################
-# plot iperf data
+# plot iperf tcp data
 ###################
-data = pd.read_csv(_ + '/../trials/tryme.csv')
-data2 = pd.read_csv(_ + '/../trials/tryme2.csv')
 
-ax = plt.subplot(111, label="iperf")
+rel_path = path + "/iperf_tcp_test/"
+filelist = os.listdir(rel_path)
+for x in filelist:
+    if x.endswith(".csv") and x.startswith("iperf_tcp"):
+        try:
+            with pd.read_csv(rel_path + x) as data:
+                # compute averages and plot those
+                A = list(data['bits_per_second'])
+                Ae = A[0::2]
+                Ao = A[1::2]
+                av1 = sum(Ae)/(len(Ae)*1000000)
+                av2 = sum(Ao)/(len(Ao)*1000000)
 
-# compute averages and plot those
-A = list(data['bits_per_second'])
-Ae = A[0::2]
-Ao = A[1::2]
-B = list(data2['bits_per_second'])
-Be = B[0::2]
-Bo = B[1::2]
-av1 = sum(Ae)/(len(Ae)*1000000)
-av12 = sum(Ao)/(len(Ao)*1000000)
-av2 = sum(Be)/(len(Bo)*1000000)
-av22 = sum(Bo)/(len(Bo)*1000000)
+                # append to to clients and servers lists
+                iperf_servers.append(av2)
+                iperf_clients.append(av1)
+        except:
+            pass
 
-# create client and server average lists
-even = [av1, av2, 0, 0, 0, 0]
-odd = [av12, av22, 0, 0, 0, 0]
 
-l1 = ax.bar(x, even, width=0.3, color='b', align='edge')
-l2 = ax.bar(x, odd, width=-0.3, color='g', align='edge')
+# setup graph
+ax = plt.subplot(111, label="iperf_tcp")
+l1 = ax.bar(x, iperf_clients, width=0.3, color='b', align='edge')
+l2 = ax.bar(x, iperf_servers, width=-0.3, color='g', align='edge')
 ax.legend((l1, l2), ("Client->Server", "Server->Client"))
 autolabel(l1)
 autolabel(l2)
-
-# plt.bar(x, data['bits_per_second'])
-ax.set_title('Transmission Speed by Connection Type')
+ax.set_title('TCP Transmission Speed by Connection Type')
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
-
 plt.ylabel('Speed in Mbps')
-plt.savefig(_ + "/../charts/iperf_chart.png", dpi=250)
+plt.xlabel('Connection Type')
+
+plt.savefig(_ + "/../charts/iperf_udp_chart.png", dpi=200)
+
+
+# CLEANUP
+# drop the arrays with the iperf data
+iperf_servers.clear()
+iperf_clients.clear()
 
 # clear legend for axes
 ax.get_legend().remove()
 plt.cla()
+
+print("iPerf TCP chart generated successfully!\nGenerating iPerf UDP chart...")
+
+
+###################
+# plot iperf udp data
+###################
+
+rel_path = path + "/iperf_udp_test/"
+filelist = os.listdir(rel_path)
+for x in filelist:
+    if x.endswith(".csv") and x.startswith("iperf_udp"):
+        try:
+            with pd.read_csv(rel_path + x) as data:
+                # compute averages and plot those
+                A = list(data['bits_per_second'])
+                Ae = A[0::2]
+                Ao = A[1::2]
+                av1 = sum(Ae)/(len(Ae)*1000000)
+                av2 = sum(Ao)/(len(Ao)*1000000)
+
+                # append to to clients and servers lists
+                iperf_servers.append(av2)
+                iperf_clients.append(av1)
+        except:
+            pass
+
+
+ax = plt.subplot(111, label="iperf_udp")
+l1 = ax.bar(x, iperf_servers, width=0.3, color='b', align='edge')
+l2 = ax.bar(x, iperf_clients, width=-0.3, color='g', align='edge')
+ax.legend((l1, l2), ("Client->Server", "Server->Client"))
+autolabel(l1)
+autolabel(l2)
+ax.set_title('UDP Transmission Speed by Connection Type')
+ax.set_xticks(x)
+ax.set_xticklabels(methods)
+plt.ylabel('Speed in Mbps')
+plt.xlabel('Connection Type')
+
+plt.savefig(_ + "/../charts/iperf_udp_chart.png", dpi=200)
+
+# CLEANUP
+# drop the arrays with the iperf data
+iperf_servers.clear()
+iperf_clients.clear()
+
+# clear legend for axes
+ax.get_legend().remove()
+plt.cla()
+
+print("iPerf UDP chart generated successfully!\nGenerating ping chart...")
 
 
 ###################
 # plot ping data
 ###################
-data_p = pd.read_csv(_ + '/../trials/ping_test_danter-ygg.csv')
 
-C = list(data_p['roundtrip_time'])
-min_c = min(C)
-max_c = max(C)
-avg_c = sum(C)/len(C)
+rel_path = path + "/iperf_udp_test/"
+filelist = os.listdir(rel_path)
+for x in filelist:
+    if x.endswith(".csv") and x.startswith("iperf_udp"):
+        try:
+            with pd.read_csv(rel_path + x) as data:
+                # compute averages and plot those
+                C = list(data['roundtrip_time'])
+                min_A = min(A)
+                max_A = max(A)
+                avg_A = sum(A)/len(A)
 
-C_min = [min_c, 0, 0, 0, 0, 0]
-C_max = [max_c, 0, 0, 0, 0, 0]
-C_avg = [avg_c, 0, 0, 0, 0, 0]
+                min_ping.append(min_A)
+                max_ping.append(max_A)
+                avg_ping.append(avg_A)
+        except:
+            pass
+
 
 ax = plt.subplot(111, label="ping")
-
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
-
-l1 = ax.bar([i+0.3 for i in x], C_min, width=0.3, color='b', align='center')
-l2 = ax.bar(x, C_avg, width=0.3, color='g', align='center')
-l3 = ax.bar([i-0.3 for i in x], C_max, width=0.3, color='r', align='center')
+l1 = ax.bar([i+0.3 for i in x], min_ping, width=0.3, color='b', align='center')
+l2 = ax.bar(x, avg_ping, width=0.3, color='g', align='center')
+l3 = ax.bar([i-0.3 for i in x], max_ping, width=0.3, color='r', align='center')
 ax.legend((l1, l2, l3), ("Minimum roundtrip time",
-                         "Average roundtrip time", "Maximum roundtrip time"))
+                         "Average roundtrip time",
+                         "Maximum roundtrip time"))
 ax.set_title('Packet Roundtrip Time by Connection Type')
 autolabel(l1)
 autolabel(l2)
 autolabel(l3)
-
 plt.xlabel('Connection Type')
 plt.ylabel('Time in ms')
 
 plt.savefig(_ + "/../charts/ping_chart.png", dpi=250)
 
+# CLEANUP
+# drop the arrays with the iperf data
+min_ping.clear()
+max_ping.clear()
+avg_ping.clear()
+
 # clear legend for axes
 ax.get_legend().remove()
 plt.cla()
+
+print("Ping chart generated successfully!\nGenerating ssh speed graphs...")
+
 
 ###################
 # plot ssh speed data
 ###################
 
-data_s = pd.read_csv(_ + '/../trials/scp-speed.csv')
+rel_path = path + "/iperf_udp_test/"
+filelist = os.listdir(rel_path)
+for x in filelist:
+    if x.endswith(".csv") and x.startswith("iperf_udp"):
+        try:
+            with pd.read_csv(rel_path + x) as data:
+                # compute averages and plot those
+                U = list(data['Upload_Speed'])
+                D = list(data['Download_Speed'])
 
-U = list(data_s['Upload_Speed'])
-D = list(data_s['Download_Speed'])
+                avg_U = sum(U)/len(U)
+                avg_D = sum(D)/len(D)
 
-avg_U = sum(U)/len(U)
-avg_D = sum(D)/len(D)
+                ssh_upload.append(avg_U)
+                ssh_download.append(avg_D)
 
-U_all = [avg_U, 0, 0, 0, 0, 0]
-D_all = [avg_D, 0, 0, 0, 0, 0]
+        except:
+            pass
+                
 
 ax = plt.subplot(111, label="ssh")
-
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
-
-l1 = ax.bar(x, U_all, width=0.3, color='b', align='edge')
-l2 = ax.bar(x, D_all, width=-0.3, color='g', align='edge')
-
+l1 = ax.bar(x, ssh_upload, width=0.3, color='b', align='edge')
+l2 = ax.bar(x, ssh_download, width=-0.3, color='g', align='edge')
 ax.legend((l1, l2), ("Average Upload Speed",
                      "Average Download Speed"))
-
 autolabel(l1)
 autolabel(l2)
-
-
 plt.xlabel('Connection Type')
 plt.ylabel('Speed in Mbps')
 
-plt.savefig(_ + "/../charts/ssh_chart.png", dpi=250)
+plt.savefig(_ + "/../charts/ssh_chart.png", dpi=200)
+
+## complete!
+print("All charts generated successfully!")
