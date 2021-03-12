@@ -27,13 +27,15 @@ connection_method="${3?Error: network type not specified (1-6)}"     #1-6
 trial_location="${4?Error: trial location not given: campus or long-distance?}"
 
 ## check input
+x=$(cat /etc/hosts | grep "$remote_host")
+y=$(cat /etc/hosts | grep "$local_host")
 
-if [ -z cat /etc/hosts | grep "$remote_host" ]; then 
+if [ -z "$x" ]; then 
   echo "Remote host specified is not in /etc/hosts database. Please update the database and try again. Exiting ..."
   exit 1
 fi
 
-if [ -z cat /etc/hosts | grep "$local_host" ]; then 
+if [ -z "$y" ]; then 
   echo "Local host specified is not in the /etc/hosts database. Please update the database and try again. Exiting ..."
   exit 1
 fi
@@ -46,17 +48,18 @@ fi
 shift 4
 
 ip=""
-while getopts "t:" opt || : ; do
-  case ${opt} in
+while getopts "t:" opt || :; do
+  case $opt in
     t )
       if [ $OPTARG == "ipv4" ] || [ $OPTARG == "ipv6" ]; then
-        ip=$OPTARG
+        ip=$OPTARG; 
       else 
         echo "Invalid option: -t requires an argument: \"ipv4\" or \"ipv6\""
         exit 1
       fi
-      ;;
-    \? )
+      break;;
+    [?] )
+      echo "Invalid option: \"$OPTARG\""
       usage && exit 1
       ;;
     : )
@@ -88,9 +91,9 @@ cd ../test-results/$trial_location/
 echo "Starting ping test ..."
 
 #put headers in first
-echo "Destination_IP,trip_number,roundtrip_time," >> ping_test/ping_test_$connection_method.csv
+echo "Destination_IP,trip_number,roundtrip_time" >> ping_test/ping_test_$connection_method.csv
 echo "run: ping6 -w30 $remote_host >> ping_test_$connection_method.csv"
-../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv ## delete the 6 iff the host is not ipv6
+../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv ## delete the 6 iff the host is not ipv6
 
 echo "Test complete."
 
@@ -106,7 +109,7 @@ echo "Starting iperf server on remote host..."
 echo "run: iperf -c $remote_host -t 30 >> iperf_tcp_test/iperf_tcp.csv"
 
 #put csv headers in first
-echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_$connection_method.csv
+echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
 [ ip == "ipv6" ] && iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv || iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv ## delete -V iff the host is not ipv6
 
 #kill iperf server
