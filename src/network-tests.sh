@@ -89,11 +89,11 @@ cd ../test-results/$trial_location/
 # ping test
 
 echo "Starting ping test ..."
+out=$(cat ping_test/ping_test_$connection_method.csv)
 
-#put headers in first
-echo "Destination_IP,trip_number,roundtrip_time" >> ping_test/ping_test_$connection_method.csv
+[ ! -f ping_test/ping_test_$connection_method.csv ] && echo "Destination_IP,trip_number,roundtrip_time" >> ping_test/ping_test_$connection_method.csv
 echo "run: ping6 -w30 $remote_host >> ping_test_$connection_method.csv"
-../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv ## delete the 6 iff the host is not ipv6
+[ ip == "ipv6" ] && ../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv || ../../src/ping-csv.sh -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
 
 echo "Test complete."
 
@@ -109,7 +109,7 @@ echo "Starting iperf server on remote host..."
 echo "run: iperf -c $remote_host -t 30 >> iperf_tcp_test/iperf_tcp.csv"
 
 #put csv headers in first
-echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
+[ ! -f iperf_tcp_test/iperf_tcp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
 [ ip == "ipv6" ] && iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv || iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv ## delete -V iff the host is not ipv6
 
 #kill iperf server
@@ -132,8 +132,8 @@ echo -e "Starting iperf client UDP test...\nStarting iperf server on remote host
 
 echo "run: iperf -c $remote_host -t 30 >> iperf_udp_test/iperf_udp_$connection_method.csv"
 #put csv headers in first
-echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_udp_test/iperf_udp_$connection_method.csv
-[ ip == "ipv6" ] iperf -c $remote_host -V -u -t 30 -r -y c >> iperf_udp_test/iperf_udp_$connection_method.csv || iperf -c $remote_host -u -t 30 -r -y c >> iperf_udp_test/iperf_udp_$connection_method.csv  ## delete -V iff the host is not ipv6
+[ ! -f iperf_udp_test/iperf_udp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_udp_test/iperf_udp_$connection_method.csv
+[ ip == "ipv6" ] && iperf -c $remote_host -V -u -t 30 -r -y c >> iperf_udp_test/iperf_udp_$connection_method.csv || iperf -c $remote_host -u -t 30 -r -y c >> iperf_udp_test/iperf_udp_$connection_method.csv  ## delete -V iff the host is not ipv6
 
 #kill iperf server
 ssh $remote_host "pkill iperf"
@@ -171,7 +171,7 @@ ssh $remote_host ". ~/.zshrc && timeout 30s rostopic bw /cv_camera/image_raw/com
 
 #kill ros node
 pkill cv_camera
-pkill roscore & 
+pkill roscore 
 sleep 2
 
 scp $remote_host:~/rostopic_bw_$connection_method.txt ./rostopic_bw_test/
@@ -185,10 +185,12 @@ echo "Test complete."
 
 echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 5 MB test file..."
 # call scp-speed-test.sh
-echo "Upload_speed,Download_speed" >> ssh_speed/scp_speed_results_$connection_method.csv
+[ ! -f ssh_speed/scp_speed_results_$connection_method.csv ] && echo "Upload_speed,Download_speed" >> ssh_speed/scp_speed_results_$connection_method.csv
 ../src/scp-speed-test.sh $remote_host 5 >> ssh_speed/scp_speed_results_$connection_method.csv ## run test using 5M file
 
 echo "Test complete."
 
 
 echo "All tests complete!"
+
+exit 1;
