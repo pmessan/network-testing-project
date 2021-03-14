@@ -94,10 +94,10 @@ out=$(cat ping_test/ping_test_$connection_method.csv)
 [ ! -f ping_test/ping_test_$connection_method.csv ] && echo "Destination_IP,trip_number,roundtrip_time" >> ping_test/ping_test_$connection_method.csv
 echo "run: ping6 -w30 $remote_host >> ping_test_$connection_method.csv"
 if [ ip == "ipv6" ] ; then
-  sed '/./!d' ping_test/ping_test_$connection_method.csv;
+  # sed '$d' ping_test/ping_test_$connection_method.csv;
   ../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
 else
-  sed '/./!d' iperf_udp_test/iperf_udp_$connection_method.csv
+  # sed '$d' ping_test/ping_test_$connection_method.csv
   ../../src/ping-csv.sh -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
 fi
 echo "Test complete."
@@ -116,10 +116,10 @@ echo "run: iperf -c $remote_host -t 30 >> iperf_tcp_test/iperf_tcp.csv"
 #put csv headers in first
 [ ! -f iperf_tcp_test/iperf_tcp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
 if [ ip == "ipv6" ] ; then
-  sed '/./!d' iperf_tcp_test/iperf_tcp_$connection_method.csv
+  # sed '$d' iperf_tcp_test/iperf_tcp_$connection_method.csv
   iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
 else
-  sed '/./!d' iperf_udp_test/iperf_udp_$connection_method.csv
+  # sed '$d' iperf_tcp_test/iperf_tcp_$connection_method.csv
   iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv ## delete -V iff the host is not ipv6
 fi
 
@@ -145,11 +145,12 @@ echo "run: iperf -c $remote_host -t 30 >> iperf_udp_test/iperf_udp_$connection_m
 #put csv headers in first
 [ ! -f iperf_udp_test/iperf_udp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second,jitter,cnterror,cntDatagrams,lostDatagrams,nOutOfOrder" >> iperf_udp_test/iperf_udp_$connection_method.csv
 if [ ip == "ipv6" ] ; then
-  sed '/./!d' iperf_udp_test/iperf_udp_$connection_method.csv
+  # sed '$d' iperf_udp_test/iperf_udp_$connection_method.csv
   iperf -c $remote_host -V -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv 
 else
-  sed '/./!d' iperf_udp_test/iperf_udp_$connection_method.csv
+  # sed '$d' iperf_udp_test/iperf_udp_$connection_method.csv
   iperf -c $remote_host -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv  ## delete -V iff the host is not ipv6
+fi
 
 #kill iperf server
 ssh $remote_host "pkill iperf"
@@ -196,7 +197,7 @@ sleep 2
 
 scp $remote_host:~/rostopic_bw_$connection_method.txt ./rostopic_bw_test/
 
-sed '/./!d' rostopic_bw_test/rostopic_bw_$connection_method.txt
+# sed '$d' rostopic_bw_test/rostopic_bw_$connection_method.txt
 
 ssh $remote_host "rm rostopic_bw_$connection_method.txt"
 
@@ -209,7 +210,7 @@ echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 5 MB test 
 # call scp-speed-test.sh
 [ ! -f ssh_test/scp_speed_results_$connection_method.csv ] && echo "Upload_speed,Download_speed" >> ssh_test/scp_speed_results_$connection_method.csv
 
-sed '/./!d' ssh_test/scp_speed_results_$connection_method.csv
+# sed '$d' ssh_test/scp_speed_results_$connection_method.csv
 
 ../../src/scp-speed-test.sh $remote_host 5 >> ssh_test/scp_speed_results_$connection_method.csv ## run test using 5M file
 
