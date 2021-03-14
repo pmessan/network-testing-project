@@ -2,11 +2,14 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import pathlib
 import argparse
 
-"""
-Setup
-"""
+###########
+# Setup
+############
+
+print("Setting up...") 
 
 parser = argparse.ArgumentParser(
     prog="./plotscript", description='Plot the results of the tests performed in network-test-script.sh')
@@ -15,23 +18,18 @@ parser.add_argument(
 args = parser.parse_args()
 path = args.path
 
-fileList = os.listdir(path)
-
+folderList = os.listdir(path)
 
 # create array for the methods to map to numbers
-
-print("Setting up...") 
 
 methods = ["Yggdrasil", "CJDNS", "Husarnet",
            "Port Forwarding", "Wireguard", "Proxy Server"]
 
-
-_ = os.path.dirname(__file__)
+run_loc = pathlib.Path(__file__).parent.absolute()
 
 x = list(range(6))  # 6 methods being tested
 
 plt.figure(figsize=(8.8, 5.5))
-
 
 def autolabel(rects):
     """Attach a text label above each bar in *rects*, displaying its height."""
@@ -41,20 +39,19 @@ def autolabel(rects):
                     xy=(rect.get_x() + rect.get_width() / 2, height),
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
-
                     ha='center', va='bottom')
 
-
-iperf_servers = []
-iperf_clients = []
-min_ping = []
-max_ping = []
-avg_ping = []
-ssh_upload = []
-ssh_download = []
-
+# init empty arrays
+iperf_servers = [0] * 6
+iperf_clients = [0] * 6
+min_ping = [0] * 6
+max_ping = [0] * 6
+avg_ping = [0] * 6
+ssh_upload = [0] * 6
+ssh_download = [0] * 6
 
 print("Setup complete.\n Generating iperf TCP chart...")
+
 
 ###################
 # plot iperf tcp data
@@ -62,23 +59,20 @@ print("Setup complete.\n Generating iperf TCP chart...")
 
 rel_path = path + "/iperf_tcp_test/"
 filelist = os.listdir(rel_path)
-for x in filelist:
-    if x.endswith(".csv") and x.startswith("iperf_tcp"):
-        try:
-            with pd.read_csv(rel_path + x) as data:
-                # compute averages and plot those
-                A = list(data['bits_per_second'])
-                Ae = A[0::2]
-                Ao = A[1::2]
-                av1 = sum(Ae)/(len(Ae)*1000000)
-                av2 = sum(Ao)/(len(Ao)*1000000)
+for a in filelist:
+    if a.endswith(".csv"):
+        data = pd.read_csv(rel_path + a)
+        # compute averages and plot those
+        A = list(data['bits_per_second'])
+        Ae = A[0::2]
+        Ao = A[1::2]
+        # print(Ae)
+        av1 = sum(Ae)/(len(Ae)*1000000)
+        av2 = sum(Ao)/(len(Ao)*1000000)
 
-                # append to to clients and servers lists
-                iperf_servers.append(av2)
-                iperf_clients.append(av1)
-        except:
-            pass
-
+        # append to to clients and servers lists
+        iperf_servers[filelist.index(a)] = av1
+        iperf_clients[filelist.index(a)] = av2
 
 # setup graph
 ax = plt.subplot(111, label="iperf_tcp")
@@ -93,13 +87,13 @@ ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
-plt.savefig(_ + "/../charts/iperf_udp_chart.png", dpi=200)
-
+# export
+plt.savefig(str(run_loc) + "/../charts/iperf_tcp_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
-iperf_servers.clear()
-iperf_clients.clear()
+iperf_servers = [0] * 6
+iperf_clients = [0] * 6
 
 # clear legend for axes
 ax.get_legend().remove()
@@ -114,23 +108,19 @@ print("iPerf TCP chart generated successfully!\nGenerating iPerf UDP chart...")
 
 rel_path = path + "/iperf_udp_test/"
 filelist = os.listdir(rel_path)
-for x in filelist:
-    if x.endswith(".csv") and x.startswith("iperf_udp"):
-        try:
-            with pd.read_csv(rel_path + x) as data:
-                # compute averages and plot those
-                A = list(data['bits_per_second'])
-                Ae = A[0::2]
-                Ao = A[1::2]
-                av1 = sum(Ae)/(len(Ae)*1000000)
-                av2 = sum(Ao)/(len(Ao)*1000000)
+for a in filelist:
+    if a.endswith(".csv") and a.startswith("iperf_udp"):
+        # compute averages and plot those
+        data = pd.read_csv(rel_path + a)
+        A = list(data['bits_per_second'])
+        Ae = A[0::2]
+        Ao = A[1::2]
+        av1 = sum(Ae)/(len(Ae)*1000000)
+        av2 = sum(Ao)/(len(Ao)*1000000)
 
-                # append to to clients and servers lists
-                iperf_servers.append(av2)
-                iperf_clients.append(av1)
-        except:
-            pass
-
+        # append to to clients and servers lists
+        iperf_servers[filelist.index(a)] = av1
+        iperf_clients[filelist.index(a)] = av2
 
 ax = plt.subplot(111, label="iperf_udp")
 l1 = ax.bar(x, iperf_servers, width=0.3, color='b', align='edge')
@@ -144,16 +134,17 @@ ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
-plt.savefig(_ + "/../charts/iperf_udp_chart.png", dpi=200)
+plt.savefig(str(run_loc) + "/../charts/iperf_udp_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
-iperf_servers.clear()
-iperf_clients.clear()
+iperf_servers = [0] * 6
+iperf_clients = [0] * 6
 
 # clear legend for axes
 ax.get_legend().remove()
 plt.cla()
+
 
 print("iPerf UDP chart generated successfully!\nGenerating ping chart...")
 
@@ -162,23 +153,21 @@ print("iPerf UDP chart generated successfully!\nGenerating ping chart...")
 # plot ping data
 ###################
 
-rel_path = path + "/iperf_udp_test/"
+rel_path = path + "/ping_test/"
 filelist = os.listdir(rel_path)
-for x in filelist:
-    if x.endswith(".csv") and x.startswith("iperf_udp"):
-        try:
-            with pd.read_csv(rel_path + x) as data:
-                # compute averages and plot those
-                C = list(data['roundtrip_time'])
-                min_A = min(A)
-                max_A = max(A)
-                avg_A = sum(A)/len(A)
+for a in filelist:
+    if a.endswith(".csv") and a.startswith("ping"):
+        data = pd.read_csv(rel_path + a)
+        # compute averages and plot those
+        A = list(data['roundtrip_time'])
+        min_A = min(A)
+        max_A = max(A)
+        avg_A = sum(A)/len(A)
 
-                min_ping.append(min_A)
-                max_ping.append(max_A)
-                avg_ping.append(avg_A)
-        except:
-            pass
+        print(avg_A)
+        min_ping[filelist.index(a)] = min_A
+        max_ping[filelist.index(a)] = max_A
+        avg_ping[filelist.index(a)] = avg_A
 
 
 ax = plt.subplot(111, label="ping")
@@ -197,7 +186,7 @@ autolabel(l3)
 plt.xlabel('Connection Type')
 plt.ylabel('Time in ms')
 
-plt.savefig(_ + "/../charts/ping_chart.png", dpi=250)
+plt.savefig(str(run_loc) + "/../charts/ping_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
@@ -216,24 +205,21 @@ print("Ping chart generated successfully!\nGenerating ssh speed graphs...")
 # plot ssh speed data
 ###################
 
-rel_path = path + "/iperf_udp_test/"
+rel_path = path + "/ssh_test/"
 filelist = os.listdir(rel_path)
-for x in filelist:
-    if x.endswith(".csv") and x.startswith("iperf_udp"):
-        try:
-            with pd.read_csv(rel_path + x) as data:
-                # compute averages and plot those
-                U = list(data['Upload_Speed'])
-                D = list(data['Download_Speed'])
+for a in filelist:
+    if a.endswith(".csv"):
+        data = pd.read_csv(rel_path + a)
+        # compute averages and plot those
+        U = list(data['Upload_speed'])
+        D = list(data['Download_speed'])
 
-                avg_U = sum(U)/len(U)
-                avg_D = sum(D)/len(D)
+        avg_U = sum(U)/len(U)
+        avg_D = sum(D)/len(D)
 
-                ssh_upload.append(avg_U)
-                ssh_download.append(avg_D)
+        ssh_upload[filelist.index(a)] = avg_U
+        ssh_download[filelist.index(a)] = avg_D
 
-        except:
-            pass
                 
 
 ax = plt.subplot(111, label="ssh")
@@ -248,7 +234,8 @@ autolabel(l2)
 plt.xlabel('Connection Type')
 plt.ylabel('Speed in Mbps')
 
-plt.savefig(_ + "/../charts/ssh_chart.png", dpi=200)
+plt.savefig(str(run_loc) + "/../charts/ssh_chart.png", dpi=200)
 
-## complete!
+
+# complete!
 print("All charts generated successfully!")
