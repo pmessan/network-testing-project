@@ -50,7 +50,7 @@ avg_ping = [0] * 6
 ssh_upload = [0] * 6
 ssh_download = [0] * 6
 
-print("Setup complete.\n Generating iperf TCP chart...")
+print("Setup complete.\nGenerating iperf TCP chart...")
 
 
 ###################
@@ -164,7 +164,6 @@ for a in filelist:
         max_A = max(A)
         avg_A = sum(A)/len(A)
 
-        print(avg_A)
         min_ping[filelist.index(a)] = min_A
         max_ping[filelist.index(a)] = max_A
         avg_ping[filelist.index(a)] = avg_A

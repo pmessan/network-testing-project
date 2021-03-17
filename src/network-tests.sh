@@ -25,7 +25,7 @@ removeLastLine() {
   length=$(wc -c < "$1")
   if [ "$length" -ne 0 ] && [ -z "$(tail -c -1 <file)" ]; then
     # The file ends with a newline or null
-    dd if=/dev/null of="$1" obs="$((length-1))" seek=1
+    ( dd if=/dev/null of="$1" obs="$((length-1))" seek=1 ) > /dev/null 2>&1
   fi
 }
 
@@ -119,7 +119,7 @@ echo "Starting iperf client TCP test..."
 echo "Starting iperf server on remote host..."
 [ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -V &" || timeout 10s ssh $remote_host "iperf -s &"
 
-echo "run: iperf -c $remote_host -t 30 >> iperf_tcp_test/iperf_tcp.csv"
+echo "Running iperf client on local host..."
 
 #put csv headers in first
 [ ! -f iperf_tcp_test/iperf_tcp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
@@ -128,7 +128,7 @@ if [ $ip == "ipv6" ] ; then
   iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
 else
   removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
-  iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv ## delete -V iff the host is not ipv6
+  iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
 fi
 
 #kill iperf server
@@ -143,7 +143,7 @@ echo "Test complete."
 echo -e "Starting iperf client UDP test...\nStarting iperf server on remote host..."
 
 #start iperf server in bg on remote host; timeout to prevent hanging
-[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  &" || timeout 10s ssh $remote_host "iperf -s -u  &"## delete -V iff the host is not ipv6
+[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  -D" || timeout 10s ssh $remote_host "iperf -s -u -D"## delete -V iff the host is not ipv6
 
 echo "run: iperf -c $remote_host -t 30 >> iperf_udp_test/iperf_udp_$connection_method.csv"
 #put csv headers in first
