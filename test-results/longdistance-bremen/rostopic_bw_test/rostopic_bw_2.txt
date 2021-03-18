@@ -1,0 +1,57 @@
+subscribed to [/cv_camera/image_raw/compressed]
+average: 714.67KB/s
+	mean: 42.30KB min: 41.23KB max: 44.47KB window: 17
+average: 1.28MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 60
+average: 1.59MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.65MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.38MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.25MB/s
+	mean: 0.04MB min: 0.04MB max: 0.04MB window: 100
+average: 1.31MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.31MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.38MB/s
+	mean: 0.05MB min: 0.04MB max: 0.05MB window: 100
+average: 1.40MB/s
+	mean: 0.05MB min: 0.04MB max: 0.05MB window: 100
+average: 1.50MB/s
+	mean: 0.05MB min: 0.04MB max: 0.06MB window: 100
+average: 1.41MB/s
+	mean: 0.05MB min: 0.04MB max: 0.06MB window: 100
+average: 1.37MB/s
+	mean: 0.05MB min: 0.04MB max: 0.06MB window: 100
+average: 1.31MB/s
+	mean: 0.05MB min: 0.04MB max: 0.05MB window: 100
+average: 1.33MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.34MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.36MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.26MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.32MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.36MB/s
+	mean: 0.05MB min: 0.04MB max: 0.05MB window: 100
+average: 1.39MB/s
+	mean: 0.05MB min: 0.04MB max: 0.05MB window: 100
+average: 1.37MB/s
+	mean: 0.05MB min: 0.04MB max: 0.05MB window: 100
+average: 1.41MB/s
+	mean: 0.05MB min: 0.04MB max: 0.06MB window: 100
+average: 1.38MB/s
+	mean: 0.05MB min: 0.04MB max: 0.06MB window: 100
+average: 1.40MB/s
+	mean: 0.05MB min: 0.04MB max: 0.06MB window: 100
+average: 1.29MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 1.33MB/s
+	mean: 0.04MB min: 0.04MB max: 0.05MB window: 100
+average: 932.22KB/s
+	mean: 44.76KB min: 40.80KB max: 53.02KB window: 100

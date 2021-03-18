@@ -1,0 +1,2 @@
+timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second
+20210318023453,200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b,37770,205:e1c4:f95:d552:16a2:ac20:27d2:b2fd,5001,4,0.0-39.1,6382604,1305437
