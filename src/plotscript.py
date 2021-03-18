@@ -41,6 +41,9 @@ def autolabel(rects):
                     textcoords="offset points",
                     ha='center', va='bottom')
 
+# def sortKey(fileName):
+#     return fileName.split(".")[0].split("_")[:-1]
+
 # init empty arrays
 iperf_servers = [0] * 6
 iperf_clients = [0] * 6
@@ -58,7 +61,8 @@ print("Setup complete.\nGenerating iperf TCP chart...")
 ###################
 
 rel_path = path + "/iperf_tcp_test/"
-filelist = os.listdir(rel_path)
+filelist = sorted(os.listdir(rel_path))
+
 for a in filelist:
     if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
@@ -76,8 +80,8 @@ for a in filelist:
 
 # setup graph
 ax = plt.subplot(111, label="iperf_tcp")
-l1 = ax.bar(x, iperf_clients, width=0.3, color='b', align='edge')
-l2 = ax.bar(x, iperf_servers, width=-0.3, color='g', align='edge')
+l1 = ax.bar(x, iperf_clients, width=0.3, color='orangered', align='edge')
+l2 = ax.bar(x, iperf_servers, width=-0.3, color='limegreen', align='edge')
 ax.legend((l1, l2), ("Client->Server", "Server->Client"))
 autolabel(l1)
 autolabel(l2)
@@ -107,7 +111,8 @@ print("iPerf TCP chart generated successfully!\nGenerating iPerf UDP chart...")
 ###################
 
 rel_path = path + "/iperf_udp_test/"
-filelist = os.listdir(rel_path)
+filelist = sorted(os.listdir(rel_path))
+
 for a in filelist:
     if a.endswith(".csv") and a.startswith("iperf_udp"):
         # compute averages and plot those
@@ -123,8 +128,8 @@ for a in filelist:
         iperf_clients[filelist.index(a)] = av2
 
 ax = plt.subplot(111, label="iperf_udp")
-l1 = ax.bar(x, iperf_servers, width=0.3, color='b', align='edge')
-l2 = ax.bar(x, iperf_clients, width=-0.3, color='g', align='edge')
+l1 = ax.bar(x, iperf_servers, width=0.3, color='turquoise', align='edge')
+l2 = ax.bar(x, iperf_clients, width=-0.3, color='slateblue', align='edge')
 ax.legend((l1, l2), ("Client->Server", "Server->Client"))
 autolabel(l1)
 autolabel(l2)
@@ -154,7 +159,8 @@ print("iPerf UDP chart generated successfully!\nGenerating ping chart...")
 ###################
 
 rel_path = path + "/ping_test/"
-filelist = os.listdir(rel_path)
+filelist = sorted(os.listdir(rel_path))
+
 for a in filelist:
     if a.endswith(".csv") and a.startswith("ping"):
         data = pd.read_csv(rel_path + a)
@@ -172,9 +178,9 @@ for a in filelist:
 ax = plt.subplot(111, label="ping")
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
-l1 = ax.bar([i+0.3 for i in x], min_ping, width=0.3, color='b', align='center')
-l2 = ax.bar(x, avg_ping, width=0.3, color='g', align='center')
-l3 = ax.bar([i-0.3 for i in x], max_ping, width=0.3, color='r', align='center')
+l1 = ax.bar([i+0.3 for i in x], min_ping, width=0.3, color='orangered', align='center')
+l2 = ax.bar(x, avg_ping, width=0.3, color='forestgreen', align='center')
+l3 = ax.bar([i-0.3 for i in x], max_ping, width=0.3, color='royalblue', align='center')
 ax.legend((l1, l2, l3), ("Minimum roundtrip time",
                          "Average roundtrip time",
                          "Maximum roundtrip time"))
@@ -205,7 +211,8 @@ print("Ping chart generated successfully!\nGenerating ssh speed graphs...")
 ###################
 
 rel_path = path + "/ssh_test/"
-filelist = os.listdir(rel_path)
+filelist = sorted(os.listdir(rel_path))
+
 for a in filelist:
     if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
@@ -224,17 +231,19 @@ for a in filelist:
 ax = plt.subplot(111, label="ssh")
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
-l1 = ax.bar(x, ssh_upload, width=0.3, color='b', align='edge')
-l2 = ax.bar(x, ssh_download, width=-0.3, color='g', align='edge')
+l1 = ax.bar(x, ssh_upload, width=0.3, color='steelblue', align='edge')
+l2 = ax.bar(x, ssh_download, width=-0.3, color='sienna', align='edge')
 ax.legend((l1, l2), ("Average Upload Speed",
                      "Average Download Speed"))
 autolabel(l1)
 autolabel(l2)
 plt.xlabel('Connection Type')
-plt.ylabel('Speed in Mbps')
+plt.ylabel('Speed in Kbps')
+ax.set_title('SSH Data Transfer Speed by Connection Type')
 
 plt.savefig(str(run_loc) + "/../charts/ssh_chart.png", dpi=200)
 
+print("ssh chart generated successfully!")
 
 # complete!
 print("All charts generated successfully!")

@@ -97,9 +97,8 @@ cd ../test-results/$trial_location/
 # ping test
 
 echo "Starting ping test ..."
-out=$(cat ping_test/ping_test_$connection_method.csv)
 
-[ ! -f ping_test/ping_test_$connection_method.csv ] && echo "Destination_IP,trip_number,roundtrip_time" >> ping_test/ping_test_$connection_method.csv
+[ ! -f ping_test/ping_test_$connection_method.csv ] && echo -e "Destination_IP,trip_number,roundtrip_time\n" >> ping_test/ping_test_$connection_method.csv
 echo "Running ping test..."
 if [ ip == "ipv6" ] ; then
   removeLastLine "ping_test/ping_test_$connection_method.csv"
@@ -117,17 +116,17 @@ echo "Test complete."
 echo "Starting iperf client TCP test..."
 
 echo "Starting iperf server on remote host..."
-[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -V &" || timeout 10s ssh $remote_host "iperf -s &"
+[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -V -D" || timeout 10s ssh $remote_host "iperf -s -D"
 
 echo "Running iperf client on local host..."
 
 #put csv headers in first
 [ ! -f iperf_tcp_test/iperf_tcp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
 if [ $ip == "ipv6" ] ; then
-  removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
+  # removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
   iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
 else
-  removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
+  # removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
   iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
 fi
 
@@ -145,14 +144,14 @@ echo -e "Starting iperf client UDP test...\nStarting iperf server on remote host
 #start iperf server in bg on remote host; timeout to prevent hanging
 [ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  -D" || timeout 10s ssh $remote_host "iperf -s -u -D"## delete -V iff the host is not ipv6
 
-echo "run: iperf -c $remote_host -t 30 >> iperf_udp_test/iperf_udp_$connection_method.csv"
+echo "Running iperf client on local host..."
 #put csv headers in first
 [ ! -f iperf_udp_test/iperf_udp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second,jitter,cnterror,cntDatagrams,lostDatagrams,nOutOfOrder" >> iperf_udp_test/iperf_udp_$connection_method.csv
 if [ $ip == "ipv6" ] ; then
-  removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
+  # removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
   iperf -c $remote_host -V -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv 
 else
-  removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
+  # removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
   iperf -c $remote_host -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv  ## delete -V iff the host is not ipv6
 fi
 
@@ -165,32 +164,35 @@ echo "Test complete."
 
 
 #rostopic bw, this node receives the images
-# use rosrun usb_cam usb_cam_node
+# use ROS node of your choice, cv_camera_node worked for me because I had opencv installed
 
 echo -e "Starting rostopic bw test...\nStarting roscore on local host..."
 
 X=$(pgrep roscore)
 
 if [ -z "$X" ] ; then 
-  roscore &
+  roscore > /dev/null 2>&1 &
   sleep 2
 else 
   echo "roscore already running!"  ## start roscore if it isn't already on the server
 fi
 
-echo "Starting ROS Node on local host..."
-rosrun cv_camera cv_camera_node &    ##can change the node to broadcast images
 
 ## on remote host, run rostopic bw
 echo "Setting ROS Master on remote host..."
 if [ $ip == "ipv6" ]; then 
-  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && exec zsh"
+  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
+  echo "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$local_host\n" >> ~/.bashrc ; . ~/.bashrc
 else 
-  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && exec zsh"
+  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
+  echo -e "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n" >> ~/.bashrc ; . ~/.bashrc
 fi
 
-echo "run: rostopic bw /usb-cam/camera/image_raw/compressed"
-ssh $remote_host ". ~/.zshrc && timeout 30s rostopic bw /cv_camera/image_raw/compressed >> rostopic_bw_$connection_method.txt" ## time for 30 seconds
+echo "Starting ROS Node on local host..."
+( rosrun cv_camera cv_camera_node )  >> /dev/null 2>&1 & ##can change the node to broadcast images
+
+echo "Running rostopic bw...."
+timeout 30s ssh $remote_host ". ~/.zshrc && timeout 30s rostopic bw /cv_camera/image_raw/compressed >> rostopic_bw_$connection_method.txt" ## time for 30 seconds
 
 #kill ros node
 pkill cv_camera
@@ -208,14 +210,14 @@ echo "Test complete."
  
 
 
-echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 5 MB test file..."
+echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 10 MB test file..."
 
 [ ! -f ssh_test/scp_speed_results_$connection_method.csv ] && echo "Upload_speed,Download_speed" >> ssh_test/scp_speed_results_$connection_method.csv
 
-removeLastLine "ssh_test/scp_speed_results_$connection_method.csv"
+# removeLastLine "ssh_test/scp_speed_results_$connection_method.csv"
 
 # call scp-speed-test.sh
-../../src/scp-speed-test.sh $remote_host 5 >> ssh_test/scp_speed_results_$connection_method.csv ## run test using 5M file
+../../src/scp-speed-test.sh $remote_host 10 >> ssh_test/scp_speed_results_$connection_method.csv ## run test using 10M file
 
 echo "Test complete."
 
@@ -224,4 +226,13 @@ echo "Test complete."
 
 echo "All tests complete!"
 
-exit 1;
+
+# Add section for plotting graph
+
+echo "Do you wish to plot the graphs for the test results?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) cd  ../../src && make run ARGS="-p ../test-results/$trial_location/"; break;;
+        No ) exit 1;;
+    esac
+done
