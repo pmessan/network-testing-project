@@ -35,15 +35,13 @@ connection_method="${3?Error: network type not specified (1-6)}"     #1-6
 trial_location="${4?Error: trial location not given: campus or long-distance?}"
 
 ## check input
-x=$(cat /etc/hosts | grep "$remote_host")
-y=$(cat /etc/hosts | grep "$local_host")
 
-if [ -z "$x" ]; then 
+if [ -z "$(cat /etc/hosts | grep "$remote_host")" ]; then 
   echo "Remote host specified is not in /etc/hosts database. Please update the database and try again. Exiting ..."
   exit 1
 fi
 
-if [ -z "$y" ]; then 
+if [ -z "$(cat /etc/hosts | grep "$local_host")" ]; then 
   echo "Local host specified is not in the /etc/hosts database. Please update the database and try again. Exiting ..."
   exit 1
 fi
@@ -90,6 +88,7 @@ if [ ! -d "../test-results/$trial_location/ping_test" ] ; then
   mkdir -p "../test-results/$trial_location/iperf_udp_test"
   mkdir -p "../test-results/$trial_location/rostopic_bw_test"
   mkdir -p "../test-results/$trial_location/ssh_test"
+  mkdir -p "../test-results/$trial_location/charts"
 fi
 
 cd ../test-results/$trial_location/

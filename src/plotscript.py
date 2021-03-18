@@ -12,7 +12,7 @@ import argparse
 print("Setting up...") 
 
 parser = argparse.ArgumentParser(
-    prog="./plotscript", description='Plot the results of the tests performed in network-test-script.sh')
+    prog="./plotscript.py", description='Plot the results of the tests performed in network-test-script.sh')
 parser.add_argument(
     "-p", "--path", help="Path relative to folder with input CSV files for the graphs.")
 args = parser.parse_args()
@@ -24,8 +24,6 @@ folderList = os.listdir(path)
 
 methods = ["Yggdrasil", "CJDNS", "Husarnet",
            "Port Forwarding", "Wireguard", "Proxy Server"]
-
-run_loc = pathlib.Path(__file__).parent.absolute()
 
 x = list(range(6))  # 6 methods being tested
 
@@ -40,9 +38,6 @@ def autolabel(rects):
                     xytext=(0, 3),  # 3 points vertical offset
                     textcoords="offset points",
                     ha='center', va='bottom')
-
-# def sortKey(fileName):
-#     return fileName.split(".")[0].split("_")[:-1]
 
 # init empty arrays
 iperf_servers = [0] * 6
@@ -92,7 +87,7 @@ plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
 # export
-plt.savefig(str(run_loc) + "/../charts/iperf_tcp_chart.png", dpi=200)
+plt.savefig(path + "/charts/iperf_tcp_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
@@ -114,7 +109,7 @@ rel_path = path + "/iperf_udp_test/"
 filelist = sorted(os.listdir(rel_path))
 
 for a in filelist:
-    if a.endswith(".csv") and a.startswith("iperf_udp"):
+    if a.endswith(".csv"):
         # compute averages and plot those
         data = pd.read_csv(rel_path + a)
         A = list(data['bits_per_second'])
@@ -139,7 +134,7 @@ ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
-plt.savefig(str(run_loc) + "/../charts/iperf_udp_chart.png", dpi=200)
+plt.savefig(path + "/charts/iperf_udp_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
@@ -162,7 +157,7 @@ rel_path = path + "/ping_test/"
 filelist = sorted(os.listdir(rel_path))
 
 for a in filelist:
-    if a.endswith(".csv") and a.startswith("ping"):
+    if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
         # compute averages and plot those
         A = list(data['roundtrip_time'])
@@ -191,7 +186,7 @@ autolabel(l3)
 plt.xlabel('Connection Type')
 plt.ylabel('Time in ms')
 
-plt.savefig(str(run_loc) + "/../charts/ping_chart.png", dpi=200)
+plt.savefig(path + "/charts/ping_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
@@ -241,7 +236,7 @@ plt.xlabel('Connection Type')
 plt.ylabel('Speed in Kbps')
 ax.set_title('SSH Data Transfer Speed by Connection Type')
 
-plt.savefig(str(run_loc) + "/../charts/ssh_chart.png", dpi=200)
+plt.savefig(path + "/charts/ssh_chart.png", dpi=200)
 
 print("ssh chart generated successfully!")
 
