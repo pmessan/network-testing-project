@@ -47,6 +47,7 @@ max_ping = [0] * 6
 avg_ping = [0] * 6
 ssh_upload = [0] * 6
 ssh_download = [0] * 6
+rostopic_bw = [0] * 6
 
 print("Setup complete.\nGenerating iperf TCP chart...")
 
@@ -86,7 +87,7 @@ ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
-# export
+# save output
 plt.savefig(path + "/charts/iperf_tcp_chart.png", dpi=200)
 
 # CLEANUP
@@ -134,6 +135,7 @@ ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
+# save output
 plt.savefig(path + "/charts/iperf_udp_chart.png", dpi=200)
 
 # CLEANUP
@@ -186,6 +188,7 @@ autolabel(l3)
 plt.xlabel('Connection Type')
 plt.ylabel('Time in ms')
 
+#save output
 plt.savefig(path + "/charts/ping_chart.png", dpi=200)
 
 # CLEANUP
@@ -236,9 +239,47 @@ plt.xlabel('Connection Type')
 plt.ylabel('Speed in Kbps')
 ax.set_title('SSH Data Transfer Speed by Connection Type')
 
+# save output
 plt.savefig(path + "/charts/ssh_chart.png", dpi=200)
 
-print("ssh chart generated successfully!")
+print("ssh chart generated successfully!\nGenerating rostopic graphs...")
+
+
+###################
+# plot rostopic bw data
+###################
+
+rel_path = path + "/rostopic_bw_test/"
+filelist = sorted(os.listdir(rel_path))
+
+for a in filelist:
+    if a.endswith(".csv"):
+        data = pd.read_csv(rel_path + a)
+        # compute averages and plot those
+        B = list(data["bandwidth"])
+
+        avg_B = sum(B)/len(B)
+
+        rostopic_bw[filelist.index(a)] = avg_B
+
+                
+
+ax = plt.subplot(111, label="rostopic")
+ax.set_xticks(x)
+ax.set_xticklabels(methods)
+l1 = ax.bar(x, rostopic_bw, width=0.4, color='steelblue', align='center')
+ax.legend([l1], ["Average Bandwidth"])
+autolabel(l1)
+plt.xlabel('Connection Type')
+plt.ylabel('Speed in KBps')
+ax.set_title('ROS Topic Bandwidth of Image Stream Topic by Connection Type')
+
+# save output
+plt.savefig(path + "/charts/rostopic_bw_chart.png", dpi=200)
+
+print("Rostopic chart generated successfully!")
+
+
 
 # complete!
 print("All charts generated successfully!")

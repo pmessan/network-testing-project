@@ -200,7 +200,7 @@ sleep 2
 
 scp $remote_host:~/rostopic_bw_$connection_method.txt ./rostopic_bw_test/
 
-# sed '$d' rostopic_bw_test/rostopic_bw_$connection_method.txt
+../../src/venv/bin/python yaml-parser.py rostopic_bw_test/rostopic_bw_$connection_method.txt 
 
 ssh $remote_host "rm rostopic_bw_$connection_method.txt"
 
@@ -212,8 +212,6 @@ echo "Test complete."
 echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 10 MB test file..."
 
 [ ! -f ssh_test/scp_speed_results_$connection_method.csv ] && echo "Upload_speed,Download_speed" >> ssh_test/scp_speed_results_$connection_method.csv
-
-# removeLastLine "ssh_test/scp_speed_results_$connection_method.csv"
 
 # call scp-speed-test.sh
 ../../src/scp-speed-test.sh $remote_host 10 >> ssh_test/scp_speed_results_$connection_method.csv ## run test using 10M file
