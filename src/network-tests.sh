@@ -181,7 +181,7 @@ fi
 echo "Setting ROS Master on remote host..."
 if [ $ip == "ipv6" ]; then 
   timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
-  echo "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$local_host\n" >> ~/.bashrc ; . ~/.bashrc
+  echo "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$local_host\n" >> ~/.zshrc ; . ~/.zshrc
 else 
   timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
   echo -e "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n" >> ~/.bashrc ; . ~/.bashrc
@@ -200,7 +200,7 @@ sleep 2
 
 scp $remote_host:~/rostopic_bw_$connection_method.txt ./rostopic_bw_test/
 
-../../src/venv/bin/python yaml-parser.py rostopic_bw_test/rostopic_bw_$connection_method.txt 
+../../src/venv/bin/python ../../src/rostopic_bw-parser.py rostopic_bw_test/rostopic_bw_$connection_method.txt 
 
 ssh $remote_host "rm rostopic_bw_$connection_method.txt"
 
