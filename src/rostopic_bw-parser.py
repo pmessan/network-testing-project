@@ -35,6 +35,20 @@ windows = []
 
 rostopic_file = str(sys.argv[1])
 
+def sanitizeArray(hold_array, values_array):
+    for i in hold_array:
+        if i.endswith("MB/s"):
+            i_value = i.replace("MB/s", "")
+            values_array.append(float(i_value)*1000)
+        elif i.endswith("KB/s"):   # KB/s
+            i_value = i.replace("KB/s", "")
+            values_array.append(float(i_value))
+        elif i.endswith("KB"):   # KB/s
+            i_value = i.replace("KB", "")
+            values_array.append(float(i_value))
+        elif i.endswith("MB"):   # KB/s
+            i_value = i.replace("MB", "")
+            values_array.append(float(i_value))
 
 with open(rostopic_file, 'r') as stream:
     next(stream)    # skip topic, since we don't need it
@@ -53,47 +67,13 @@ with open(rostopic_file, 'r') as stream:
         mini_hold.append(i2[3])
         maxi_hold.append(i2[5])
         windows.append(int(i2[7]))
-    
 
-## sanitize bw data
-for i in bw_hold:
-    if i.endswith("MB/s"):
-        i_value = i.replace("MB/s", "")
-        bw_values.append(float(i_value)*1000)
-    else:   # KB/s
-        i_value = i.replace("KB/s", "")
-        bw_values.append(float(i_value))
+## sanitize data   
+sanitizeArray(bw_hold, bw_values)
+sanitizeArray(mini_hold, mini_values)
+sanitizeArray(maxi_hold, maxi_values)
+sanitizeArray(mean_hold, mean_values)
 
-## sanitize mini
-for i in mini_hold:
-    if i.endswith("MB"):
-        i_value = i.replace("MB", "")
-        mini_values.append(float(i_value)*1000)
-    else:   # KB/s
-        i_value = i.replace("KB", "")
-        mini_values.append(float(i_value))
-
-## sanitize maxi
-for i in maxi_hold:
-    if i.endswith("MB"):
-        i_value = i.replace("MB", "")
-        maxi_values.append(float(i_value)*1000)
-    else:   # KB/s
-        i_value = i.replace("KB", "")
-        maxi_values.append(float(i_value))
-
-
-## sanitize mean
-for i in mean_hold:
-    if i.endswith("MB"):
-        i_value = i.replace("MB", "")
-        mean_values.append(float(i_value)*1000)
-    else:   # KB/s
-        i_value = i.replace("KB", "")
-        mean_values.append(float(i_value))
-    
-
-     
 # dictionary of lists  
 output_dict = {'bandwidth': bw_values, 'mean': mean_values, 'minimum': mini_values, 'maximum' : maxi_values, 'window' : windows}  
        
@@ -105,5 +85,3 @@ df.to_csv(rostopic_file.replace(".txt", ".csv"), index=False)
 
 # optional, can be commented out
 # os.remove(rostopic_file)
-
-
