@@ -98,7 +98,7 @@ cd ../test-results/$trial_location/
 echo "Starting ping test ..."
 
 [ ! -f ping_test/ping_test_$connection_method.csv ] && echo -e "Destination_IP,trip_number,roundtrip_time\n" >> ping_test/ping_test_$connection_method.csv
-echo "Running ping test..."
+
 if [ ip == "ipv6" ] ; then
   removeLastLine "ping_test/ping_test_$connection_method.csv"
   ../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
@@ -181,7 +181,7 @@ fi
 echo "Setting ROS Master on remote host..."
 if [ $ip == "ipv6" ]; then 
   timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
-  echo "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$local_host\n" >> ~/.zshrc ; . ~/.zshrc
+  echo -e "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$local_host\n" >> ~/.bashrc ; . ~/.bashrc
 else 
   timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
   echo -e "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n" >> ~/.bashrc ; . ~/.bashrc
@@ -204,6 +204,8 @@ scp $remote_host:~/rostopic_bw_$connection_method.txt ./rostopic_bw_test/
 
 ssh $remote_host "rm rostopic_bw_$connection_method.txt"
 
+rm rostopic_bw_test/rostopic_bw_$connection_method.txt
+
 echo "Test complete."
 
  
@@ -225,11 +227,14 @@ echo "All tests complete!"
 
 
 # Add section for plotting graph
+cd ../../src && make run ARGS="-p ../test-results/$trial_location/"
 
-echo "Do you wish to plot the graphs for the test results?"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) cd  ../../src && make run ARGS="-p ../test-results/$trial_location/"; break;;
-        No ) exit 1;;
-    esac
-done
+exit 1
+
+# echo "Do you wish to plot the graphs for the test results?"
+# select yn in "Yes" "No"; do
+#     case $yn in
+#         Yes ) cd  ../../src && make run ARGS="-p ../test-results/$trial_location/"; break;;
+#         No ) exit 1;;
+#     esac
+# done
