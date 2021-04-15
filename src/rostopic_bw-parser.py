@@ -51,7 +51,7 @@ def sanitizeArray(hold_array, values_array):
             values_array.append(float(i_value))
 
 with open(rostopic_file, 'r') as stream:
-    next(stream)    # skip topic, since we don't need it
+    # next(stream)    # skip topic, since we don't need it
     while stream:
         # read first line & manipulate
         i1 = stream.readline()
@@ -62,6 +62,7 @@ with open(rostopic_file, 'r') as stream:
         # print(bw_hold)
         # read second line & manipulate 
         i2 = stream.readline().rstrip().split(' ')
+        # print(i2)
         mean_hold.append(i2[1])
         # print(mean)
         mini_hold.append(i2[3])
@@ -81,7 +82,7 @@ df = pd.DataFrame(output_dict)
     
 # saving the dataframe to csv
 out_rostopic_file = rostopic_file.replace(".txt", ".csv") 
-df.to_csv(rostopic_file.replace(".txt", ".csv"), index=False) 
-
+# df.to_csv(rostopic_file.replace(".txt", ".csv"), index=False) 
+df.to_csv(sys.stdout, index=False)
 # optional, can be commented out
 # os.remove(rostopic_file)

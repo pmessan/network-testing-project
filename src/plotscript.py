@@ -63,7 +63,7 @@ for a in filelist:
     if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
         # compute averages and plot those
-        A = list(data['bits_per_second'])
+        A = list(data['bits_per_second'].astype('float'))
         Ae = A[0::2]
         Ao = A[1::2]
         # print(Ae)
@@ -113,7 +113,7 @@ for a in filelist:
     if a.endswith(".csv"):
         # compute averages and plot those
         data = pd.read_csv(rel_path + a)
-        A = list(data['bits_per_second'])
+        A = list(data['bits_per_second'].astype('float'))
         Ae = A[0::2]
         Ao = A[1::2]
         av1 = sum(Ae)/(len(Ae)*1000000)
@@ -162,7 +162,7 @@ for a in filelist:
     if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
         # compute averages and plot those
-        A = list(data['roundtrip_time'])
+        A = list(data['roundtrip_time'].astype('float'))
         min_A = min(A)
         max_A = max(A)
         avg_A = sum(A)/len(A)
@@ -215,8 +215,8 @@ for a in filelist:
     if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
         # compute averages and plot those
-        U = list(data['Upload_speed'])
-        D = list(data['Download_speed'])
+        U = list(data['Upload_speed'].astype('float'))
+        D = list(data['Download_speed'].astype('float'))
 
         avg_U = sum(U)/len(U)
         avg_D = sum(D)/len(D)
@@ -256,7 +256,7 @@ for a in filelist:
     if a.endswith(".csv"):
         data = pd.read_csv(rel_path + a)
         # compute averages and plot those
-        B = list(data["bandwidth"])
+        B = list(data["bandwidth"].astype('float'))
 
         avg_B = sum(B)/len(B)
 
