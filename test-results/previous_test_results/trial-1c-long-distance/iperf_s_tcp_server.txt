@@ -1,7 +1,0 @@
-------------------------------------------------------------
-Server listening on TCP port 5001
-TCP window size:  128 KByte (default)
-------------------------------------------------------------
-[  4] local fc2d:e682:876e:8d4d:7085:3329:984d:c438 port 5001 connected with fc67:2373:2a5e:8531:a1cc:5994:a195:2280 port 46098
-[ ID] Interval       Transfer     Bandwidth
-[  4]  0.0-33.7 sec  2.00 MBytes   498 Kbits/sec

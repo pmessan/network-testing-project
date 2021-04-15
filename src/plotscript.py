@@ -23,7 +23,7 @@ folderList = os.listdir(path)
 # create array for the methods to map to numbers
 
 methods = ["Yggdrasil", "CJDNS", "Husarnet",
-           "Port Forwarding", "Proxy Server"]
+            "Proxy Server", "Port Forwarding"]
 
 x = list(range(5))  # 6 methods being tested
 

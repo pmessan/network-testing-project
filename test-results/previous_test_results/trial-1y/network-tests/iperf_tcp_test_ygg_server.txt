@@ -1,3 +1,0 @@
-[ 4] local 201:cfeb:e754:756d:506e:3d4f:b4cf:e70b port 5001 connected with 201:581b:e3a2:832b:7f08:8733:f272:aabe port 43550
-[ ID] Interval Transfer Bandwidth
-[ 4] 0.0-30.9 sec 102 MBytes 27.8 Mbits/sec 

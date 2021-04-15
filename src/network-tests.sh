@@ -93,71 +93,71 @@ fi
 
 cd ../test-results/$trial_location/
 
-# ping test
+# # ping test
 
-echo "Starting ping test ..."
+# echo "Starting ping test ..."
 
-[ ! -f ping_test/ping_test_$connection_method.csv ] && echo -e "Destination_IP,trip_number,roundtrip_time\n" >> ping_test/ping_test_$connection_method.csv
+# [ ! -f ping_test/ping_test_$connection_method.csv ] && echo -e "Destination_IP,trip_number,roundtrip_time\n" >> ping_test/ping_test_$connection_method.csv
 
-if [ ip == "ipv6" ] ; then
-  removeLastLine "ping_test/ping_test_$connection_method.csv"
-  ../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
-else
-  removeLastLine "ping_test/ping_test_$connection_method.csv"
-  ../../src/ping-csv.sh -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
-fi
-echo "Test complete."
+# if [ ip == "ipv6" ] ; then
+#   removeLastLine "ping_test/ping_test_$connection_method.csv"
+#   ../../src/ping-csv.sh -6 -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
+# else
+#   removeLastLine "ping_test/ping_test_$connection_method.csv"
+#   ../../src/ping-csv.sh -w30 $remote_host >> ping_test/ping_test_$connection_method.csv 
+# fi
+# echo "Test complete."
 
  
 
 
-# iperf TCP test; this time as the client
-echo "Starting iperf client TCP test..."
+# # iperf TCP test; this time as the client
+# echo "Starting iperf client TCP test..."
 
-echo "Starting iperf server on remote host..."
-[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -V -D" || timeout 10s ssh $remote_host "iperf -s -D"
+# echo "Starting iperf server on remote host..."
+# [ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -V -D" || timeout 10s ssh $remote_host "iperf -s -D"
 
-echo "Running iperf client on local host..."
+# echo "Running iperf client on local host..."
 
-#put csv headers in first
-[ ! -f iperf_tcp_test/iperf_tcp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
-if [ $ip == "ipv6" ] ; then
-  # removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
-  iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
-else
-  # removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
-  iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
-fi
+# #put csv headers in first
+# [ ! -f iperf_tcp_test/iperf_tcp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second" >> iperf_tcp_test/iperf_tcp_$connection_method.csv
+# if [ $ip == "ipv6" ] ; then
+#   # removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
+#   iperf -c $remote_host -V -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
+# else
+#   # removeLastLine "iperf_tcp_test/iperf_tcp_$connection_method.csv"
+#   iperf -c $remote_host -t 30 -r -y c >> iperf_tcp_test/iperf_tcp_$connection_method.csv 
+# fi
 
-#kill iperf server
-ssh $remote_host "pkill iperf"
+# #kill iperf server
+# ssh $remote_host "pkill iperf"
 
-echo "Test complete."
+# echo "Test complete."
 
 
 
-# iperf UDP test; this time as the client
+# # iperf UDP test; this time as the client
 
-echo -e "Starting iperf client UDP test...\nStarting iperf server on remote host..."
+# echo -e "Starting iperf client UDP test...\nStarting iperf server on remote host..."
 
-#start iperf server in bg on remote host; timeout to prevent hanging
-[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  -D" || timeout 10s ssh $remote_host "iperf -s -u -D"## delete -V iff the host is not ipv6
+# #start iperf server in bg on remote host; timeout to prevent hanging
+# [ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  -D" || timeout 10s ssh $remote_host "iperf -s -u -D"## delete -V iff the host is not ipv6
 
-echo "Running iperf client on local host..."
-#put csv headers in first
-[ ! -f iperf_udp_test/iperf_udp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second,jitter,cnterror,cntDatagrams,lostDatagrams,nOutOfOrder" >> iperf_udp_test/iperf_udp_$connection_method.csv
-if [ $ip == "ipv6" ] ; then
-  # removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
-  iperf -c $remote_host -V -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv 
-else
-  # removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
-  iperf -c $remote_host -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv  ## delete -V iff the host is not ipv6
-fi
+# echo "Running iperf client on local host..."
+# #put csv headers in first
+# [ ! -f iperf_udp_test/iperf_udp_$connection_method.csv ] && echo "timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second,jitter,cnterror,cntDatagrams,lostDatagrams,nOutOfOrder" >> iperf_udp_test/iperf_udp_$connection_method.csv
+# if [ $ip == "ipv6" ] ; then
+#   # removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
+#   iperf -c $remote_host -V -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv 
+# else
+#   # removeLastLine "iperf_udp_test/iperf_udp_$connection_method.csv"
+#   iperf -c $remote_host -u -t 30 -r -y c | sed '2d' >> iperf_udp_test/iperf_udp_$connection_method.csv  ## delete -V iff the host is not ipv6
+# fi
 
-#kill iperf server
-ssh $remote_host "pkill iperf"
+# #kill iperf server
+# ssh $remote_host "pkill iperf"
 
-echo "Test complete."
+# echo "Test complete."
 
 
 
@@ -180,10 +180,10 @@ fi
 ## on remote host, run rostopic bw
 echo "Setting ROS Master on remote host..."
 if [ $ip == "ipv6" ]; then 
-  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
+  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc ; . ~/.zshrc"
   echo -e "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=on\nexport ROS_HOSTNAME=$local_host\n" >> ~/.bashrc ; . ~/.bashrc
 else 
-  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc && zsh"
+  timeout 10s ssh $remote_host "echo -e \"export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n\" >> ~/.zshrc ; . ~/.zshrc"
   echo -e "export ROS_MASTER_URI=http://$local_host:11311/\nexport ROS_IPV6=off\nexport ROS_HOSTNAME=$remote_host\n" >> ~/.bashrc ; . ~/.bashrc
 fi
 
@@ -204,21 +204,24 @@ scp $remote_host:~/rostopic_bw_$connection_method.txt ./rostopic_bw_test/
 
 ssh $remote_host "rm rostopic_bw_$connection_method.txt"
 
-rm rostopic_bw_test/rostopic_bw_$connection_method.txt
+# rm rostopic_bw_test/rostopic_bw_$connection_method.txt
 
 echo "Test complete."
+
+# zip -r rostopic_bw_test/ rostopic_bw_test.zip 
+# mv rostopic_bw_test.zip ~/Desktop
 
  
 
 
-echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 10 MB test file..."
+# echo -e "Starting ssh speed test...\nRunning ./scp-speed-test.sh with 10 MB test file..."
 
-[ ! -f ssh_test/scp_speed_results_$connection_method.csv ] && echo "Upload_speed,Download_speed" >> ssh_test/scp_speed_results_$connection_method.csv
+# [ ! -f ssh_test/scp_speed_results_$connection_method.csv ] && echo "Upload_speed,Download_speed" >> ssh_test/scp_speed_results_$connection_method.csv
 
-# call scp-speed-test.sh
-../../src/scp-speed-test.sh $remote_host 10 >> ssh_test/scp_speed_results_$connection_method.csv ## run test using 10M file
+# # call scp-speed-test.sh
+# ../../src/scp-speed-test.sh $remote_host 10 >> ssh_test/scp_speed_results_$connection_method.csv ## run test using 10M file
 
-echo "Test complete."
+# echo "Test complete."
 
 
 ## tests complete
@@ -227,7 +230,7 @@ echo "All tests complete!"
 
 
 # Add section for plotting graph
-cd ../../src && make run ARGS="-p ../test-results/$trial_location/"
+# cd ../../src && make run ARGS="-p ../test-results/$trial_location/"
 
 exit 1
 

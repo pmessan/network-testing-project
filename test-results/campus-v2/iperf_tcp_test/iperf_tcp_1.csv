@@ -1,0 +1,3 @@
+timestamp,source_address,source_port,destination_address,destination_port,connection_type,interval,transferred_bytes,bits_per_second
+20210413092016,200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b,54762,200:797a:7226:a8b1:3fd6:8351:e1da:1c8b,5001,4,0.0-34.2,94502912,22090936
+20210413092051,200:6de9:bd0e:5799:cb49:dd29:e5b1:8b5b,5001,200:797a:7226:a8b1:3fd6:8351:e1da:1c8b,45962,4,0.0-33.5,82313216,19640238
