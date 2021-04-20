@@ -1,0 +1,276 @@
+average: 864.29KB/s
+	mean: 132.20KB min: 132.07KB max: 132.34KB window: 4
+average: 737.92KB/s
+	mean: 132.27KB min: 132.07KB max: 132.55KB window: 9
+average: 708.29KB/s
+	mean: 132.28KB min: 132.07KB max: 132.55KB window: 14
+average: 694.98KB/s
+	mean: 132.26KB min: 132.07KB max: 132.55KB window: 19
+average: 687.50KB/s
+	mean: 132.26KB min: 132.07KB max: 132.58KB window: 24
+average: 682.69KB/s
+	mean: 132.26KB min: 132.03KB max: 132.58KB window: 29
+average: 679.41KB/s
+	mean: 132.27KB min: 132.03KB max: 132.58KB window: 34
+average: 676.92KB/s
+	mean: 132.27KB min: 132.03KB max: 132.58KB window: 39
+average: 674.96KB/s
+	mean: 132.26KB min: 131.91KB max: 132.58KB window: 44
+average: 659.70KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 48
+average: 659.72KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 53
+average: 659.82KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 58
+average: 659.88KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 63
+average: 659.90KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 68
+average: 659.91KB/s
+	mean: 132.24KB min: 131.91KB max: 132.58KB window: 73
+average: 659.95KB/s
+	mean: 132.24KB min: 131.91KB max: 132.58KB window: 78
+average: 660.01KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 83
+average: 660.04KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 88
+average: 652.93KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 92
+average: 653.33KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 97
+average: 657.59KB/s
+	mean: 132.25KB min: 131.91KB max: 132.58KB window: 100
+average: 651.83KB/s
+	mean: 132.25KB min: 131.91KB max: 132.62KB window: 100
+average: 651.11KB/s
+	mean: 132.25KB min: 131.91KB max: 132.62KB window: 100
+average: 651.19KB/s
+	mean: 132.26KB min: 131.91KB max: 132.62KB window: 100
+average: 651.78KB/s
+	mean: 132.27KB min: 131.91KB max: 132.62KB window: 100
+average: 652.30KB/s
+	mean: 132.27KB min: 131.91KB max: 132.62KB window: 100
+average: 653.51KB/s
+	mean: 132.27KB min: 131.91KB max: 132.62KB window: 100
+average: 653.29KB/s
+	mean: 132.27KB min: 131.91KB max: 132.62KB window: 100
+average: 622.52KB/s
+	mean: 132.27KB min: 131.91KB max: 132.62KB window: 100
+average: 963.24KB/s
+	mean: 132.49KB min: 132.29KB max: 132.70KB window: 2
+average: 726.00KB/s
+	mean: 132.38KB min: 131.96KB max: 132.70KB window: 7
+average: 697.94KB/s
+	mean: 132.42KB min: 131.96KB max: 132.70KB window: 12
+average: 687.05KB/s
+	mean: 132.46KB min: 131.96KB max: 132.76KB window: 17
+average: 681.07KB/s
+	mean: 132.46KB min: 131.96KB max: 132.76KB window: 22
+average: 652.46KB/s
+	mean: 132.48KB min: 131.96KB max: 132.77KB window: 26
+average: 674.85KB/s
+	mean: 132.45KB min: 131.96KB max: 132.77KB window: 32
+average: 654.85KB/s
+	mean: 132.46KB min: 131.96KB max: 132.77KB window: 36
+average: 655.69KB/s
+	mean: 132.47KB min: 131.96KB max: 132.84KB window: 41
+average: 670.62KB/s
+	mean: 132.47KB min: 131.96KB max: 132.90KB window: 47
+average: 669.78KB/s
+	mean: 132.48KB min: 131.96KB max: 132.90KB window: 52
+average: 669.06KB/s
+	mean: 132.49KB min: 131.96KB max: 132.90KB window: 57
+average: 668.51KB/s
+	mean: 132.50KB min: 131.96KB max: 132.90KB window: 62
+average: 667.97KB/s
+	mean: 132.49KB min: 131.96KB max: 132.90KB window: 67
+average: 667.55KB/s
+	mean: 132.50KB min: 131.96KB max: 132.90KB window: 72
+average: 667.11KB/s
+	mean: 132.49KB min: 131.93KB max: 132.90KB window: 77
+average: 666.79KB/s
+	mean: 132.49KB min: 131.93KB max: 132.90KB window: 82
+average: 666.44KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 87
+average: 658.95KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 91
+average: 659.11KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 96
+average: 658.30KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 100
+average: 649.34KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 100
+average: 655.96KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 100
+average: 648.64KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 100
+average: 656.33KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 100
+average: 663.92KB/s
+	mean: 132.48KB min: 131.93KB max: 132.90KB window: 100
+average: 658.03KB/s
+	mean: 132.49KB min: 131.93KB max: 132.90KB window: 100
+average: 638.30KB/s
+	mean: 132.49KB min: 131.93KB max: 132.90KB window: 100
+average: 382.66KB/s
+	mean: 132.54KB min: 132.44KB max: 132.64KB window: 2
+average: 547.31KB/s
+	mean: 132.43KB min: 132.27KB max: 132.64KB window: 7
+average: 589.63KB/s
+	mean: 132.42KB min: 132.23KB max: 132.64KB window: 12
+average: 573.26KB/s
+	mean: 132.43KB min: 132.18KB max: 132.65KB window: 16
+average: 535.66KB/s
+	mean: 132.43KB min: 132.18KB max: 132.65KB window: 19
+average: 557.77KB/s
+	mean: 132.43KB min: 132.10KB max: 132.68KB window: 24
+average: 612.88KB/s
+	mean: 132.44KB min: 132.10KB max: 132.70KB window: 31
+average: 636.41KB/s
+	mean: 132.45KB min: 132.10KB max: 132.70KB window: 37
+average: 639.37KB/s
+	mean: 132.45KB min: 132.10KB max: 132.75KB window: 42
+average: 627.96KB/s
+	mean: 132.44KB min: 131.73KB max: 132.75KB window: 46
+average: 631.09KB/s
+	mean: 132.44KB min: 131.73KB max: 132.75KB window: 51
+average: 599.70KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 53
+average: 625.39KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 60
+average: 628.00KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 65
+average: 630.22KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 70
+average: 632.22KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 75
+average: 633.98KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 80
+average: 635.50KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 85
+average: 636.87KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 90
+average: 638.15KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 95
+average: 639.24KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 100
+average: 645.46KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 100
+average: 646.58KB/s
+	mean: 132.42KB min: 131.73KB max: 132.75KB window: 100
+average: 648.37KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 100
+average: 664.73KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 100
+average: 648.74KB/s
+	mean: 132.43KB min: 131.73KB max: 132.75KB window: 100
+average: 195.43KB/s
+	mean: 132.22KB min: 132.18KB max: 132.25KB window: 2
+average: 112.32KB/s
+	mean: 132.22KB min: 132.18KB max: 132.25KB window: 2
+average: 118.21KB/s
+	mean: 132.22KB min: 132.18KB max: 132.25KB window: 3
+average: 121.31KB/s
+	mean: 132.13KB min: 131.85KB max: 132.25KB window: 4
+average: 98.65KB/s
+	mean: 132.13KB min: 131.85KB max: 132.25KB window: 4
+average: 103.91KB/s
+	mean: 132.15KB min: 131.85KB max: 132.25KB window: 5
+average: 107.71KB/s
+	mean: 132.13KB min: 131.85KB max: 132.25KB window: 6
+average: 110.61KB/s
+	mean: 132.12KB min: 131.85KB max: 132.25KB window: 7
+average: 112.86KB/s
+	mean: 132.09KB min: 131.85KB max: 132.25KB window: 8
+average: 101.96KB/s
+	mean: 132.09KB min: 131.85KB max: 132.25KB window: 8
+average: 104.61KB/s
+	mean: 132.11KB min: 131.85KB max: 132.26KB window: 9
+average: 106.83KB/s
+	mean: 132.11KB min: 131.85KB max: 132.26KB window: 10
+average: 98.83KB/s
+	mean: 132.11KB min: 131.85KB max: 132.26KB window: 10
+average: 101.13KB/s
+	mean: 132.10KB min: 131.85KB max: 132.26KB window: 11
+average: 103.11KB/s
+	mean: 132.06KB min: 131.65KB max: 132.26KB window: 12
+average: 104.89KB/s
+	mean: 132.07KB min: 131.65KB max: 132.26KB window: 13
+average: 106.44KB/s
+	mean: 132.07KB min: 131.65KB max: 132.26KB window: 14
+average: 107.83KB/s
+	mean: 132.07KB min: 131.65KB max: 132.26KB window: 15
+average: 102.26KB/s
+	mean: 132.07KB min: 131.65KB max: 132.26KB window: 15
+average: 103.71KB/s
+	mean: 132.07KB min: 131.65KB max: 132.26KB window: 16
+average: 105.03KB/s
+	mean: 132.06KB min: 131.65KB max: 132.26KB window: 17
+average: 106.22KB/s
+	mean: 132.05KB min: 131.65KB max: 132.26KB window: 18
+average: 107.32KB/s
+	mean: 132.05KB min: 131.65KB max: 132.26KB window: 19
+average: 108.32KB/s
+	mean: 132.04KB min: 131.65KB max: 132.26KB window: 20
+average: 104.05KB/s
+	mean: 132.04KB min: 131.65KB max: 132.26KB window: 20
+average: 105.11KB/s
+	mean: 132.04KB min: 131.65KB max: 132.26KB window: 21
+average: 101.27KB/s
+	mean: 132.04KB min: 131.65KB max: 132.26KB window: 21
+average: 1.03MB/s
+	mean: 0.13MB min: 0.13MB max: 0.13MB window: 3
+average: 758.99KB/s
+	mean: 131.28KB min: 130.81KB max: 131.53KB window: 8
+average: 715.26KB/s
+	mean: 131.20KB min: 130.81KB max: 131.53KB window: 13
+average: 697.54KB/s
+	mean: 131.21KB min: 130.81KB max: 131.53KB window: 18
+average: 687.64KB/s
+	mean: 131.16KB min: 130.81KB max: 131.53KB window: 23
+average: 681.45KB/s
+	mean: 131.14KB min: 130.81KB max: 131.53KB window: 28
+average: 677.22KB/s
+	mean: 131.13KB min: 130.71KB max: 131.53KB window: 33
+average: 656.47KB/s
+	mean: 131.13KB min: 130.71KB max: 131.53KB window: 37
+average: 652.41KB/s
+	mean: 130.36KB min: 104.59KB max: 131.53KB window: 42
+average: 632.58KB/s
+	mean: 123.80KB min: 74.46KB max: 131.53KB window: 48
+average: 610.28KB/s
+	mean: 119.70KB min: 74.46KB max: 131.53KB window: 53
+average: 586.34KB/s
+	mean: 117.23KB min: 74.46KB max: 131.53KB window: 57
+average: 574.24KB/s
+	mean: 113.00KB min: 70.33KB max: 131.53KB window: 63
+average: 558.74KB/s
+	mean: 110.10KB min: 70.33KB max: 131.53KB window: 68
+average: 546.34KB/s
+	mean: 107.77KB min: 70.33KB max: 131.53KB window: 73
+average: 529.10KB/s
+	mean: 105.83KB min: 66.11KB max: 131.53KB window: 77
+average: 519.27KB/s
+	mean: 103.87KB min: 66.11KB max: 131.53KB window: 82
+average: 512.96KB/s
+	mean: 102.61KB min: 66.11KB max: 131.53KB window: 87
+average: 507.85KB/s
+	mean: 101.59KB min: 66.11KB max: 131.53KB window: 92
+average: 503.07KB/s
+	mean: 100.64KB min: 66.11KB max: 131.53KB window: 97
+average: 493.11KB/s
+	mean: 99.29KB min: 66.11KB max: 131.50KB window: 100
+average: 483.73KB/s
+	mean: 97.44KB min: 66.11KB max: 131.50KB window: 100
+average: 471.47KB/s
+	mean: 95.29KB min: 66.11KB max: 131.37KB window: 100
+average: 465.09KB/s
+	mean: 93.53KB min: 66.11KB max: 131.32KB window: 100
+average: 454.74KB/s
+	mean: 91.41KB min: 66.11KB max: 131.32KB window: 100
+average: 445.13KB/s
+	mean: 89.44KB min: 66.11KB max: 131.32KB window: 100
+average: 435.09KB/s
+	mean: 87.46KB min: 66.11KB max: 131.32KB window: 100
+average: 415.96KB/s
+	mean: 85.37KB min: 66.11KB max: 131.00KB window: 100
