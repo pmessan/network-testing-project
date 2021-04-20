@@ -23,9 +23,9 @@ folderList = os.listdir(path)
 # create array for the methods to map to numbers
 
 methods = ["Yggdrasil", "CJDNS", "Husarnet",
-            "Proxy Server", "Port Forwarding"]
+            "Proxy Server"]
 
-x = list(range(5))  # 6 methods being tested
+x = list(range(4))  # 6 methods being tested
 
 plt.figure(figsize=(8.8, 5.5))
 
@@ -40,14 +40,14 @@ def autolabel(rects):
                     ha='center', va='bottom')
 
 # init empty arrays
-iperf_servers = [0] * 5
-iperf_clients = [0] * 5
-min_ping = [0] * 5
-max_ping = [0] * 5
-avg_ping = [0] * 5
-ssh_upload = [0] * 5
-ssh_download = [0] * 5
-rostopic_bw = [0] * 5
+iperf_servers = [0] * 4
+iperf_clients = [0] * 4
+min_ping = [0] * 4
+max_ping = [0] * 4
+avg_ping = [0] * 4
+ssh_upload = [0] * 4
+ssh_download = [0] * 4
+rostopic_bw = [0] * 4
 
 print("Setup complete.\nGenerating iperf TCP chart...")
 
@@ -92,8 +92,8 @@ plt.savefig(path + "/charts/iperf_tcp_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
-iperf_servers = [0] * 5
-iperf_clients = [0] * 5
+iperf_servers = [0] * 4
+iperf_clients = [0] * 4
 
 # clear legend for axes
 ax.get_legend().remove()
@@ -140,8 +140,8 @@ plt.savefig(path + "/charts/iperf_udp_chart.png", dpi=200)
 
 # CLEANUP
 # drop the arrays with the iperf data
-iperf_servers = [0] * 5
-iperf_clients = [0] * 5
+iperf_servers = [0] * 4
+iperf_clients = [0] * 4
 
 # clear legend for axes
 ax.get_legend().remove()
