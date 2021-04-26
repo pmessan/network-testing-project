@@ -58,10 +58,10 @@ while getopts "t:" opt || :; do
   case $opt in
     t )
       if [ $OPTARG == "ipv4" ] || [ $OPTARG == "ipv6" ]; then
-        ip="$OPTARG"; 
+        ip="$OPTARG"
       else 
         echo "Invalid option: -t requires an argument: \"ipv4\" or \"ipv6\""
-        exit 1
+        usage && exit 1
       fi
       break;;
     [?] )
@@ -159,7 +159,7 @@ echo "Test complete."
 
 
 
-#rostopic bw, this node receives the images
+# rostopic bw, this node receives the images
 # use ROS node of your choice, cv_camera_node worked for me because I had opencv installed
 
 echo -e "Starting rostopic bw test...\nStarting roscore on local host..."
