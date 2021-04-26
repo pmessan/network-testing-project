@@ -20,6 +20,8 @@ path = args.path
 
 folderList = os.listdir(path)
 
+test_name = path.split("/")[-1]
+
 # create array for the methods to map to numbers
 
 methods = ["Yggdrasil", "CJDNS", "Husarnet",
@@ -81,7 +83,7 @@ l2 = ax.bar(x, iperf_servers, width=-0.3, color='limegreen', align='edge')
 ax.legend((l1, l2), ("Local->Remote", "Remote->Local"))
 autolabel(l1)
 autolabel(l2)
-ax.set_title('TCP Transmission Speed by Connection Type')
+ax.set_title('TCP Transmission Speed by Connection Type - '+ test_name)
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
@@ -129,7 +131,7 @@ l2 = ax.bar(x, iperf_clients, width=-0.3, color='slateblue', align='edge')
 ax.legend((l1, l2), ("Local->Remote", "Remote->Local"))
 autolabel(l1)
 autolabel(l2)
-ax.set_title('UDP Transmission Speed by Connection Type')
+ax.set_title('UDP Transmission Speed by Connection Type - '+ test_name )
 ax.set_xticks(x)
 ax.set_xticklabels(methods)
 plt.ylabel('Speed in Mbps')
@@ -181,7 +183,7 @@ l3 = ax.bar([i-0.3 for i in x], max_ping, width=0.3, color='royalblue', align='c
 ax.legend((l1, l2, l3), ("Minimum roundtrip time",
                          "Average roundtrip time",
                          "Maximum roundtrip time"))
-ax.set_title('Packet Roundtrip Time by Connection Type')
+ax.set_title('Packet Roundtrip Time by Connection Type - '+ test_name)
 autolabel(l1)
 autolabel(l2)
 autolabel(l3)
@@ -237,7 +239,7 @@ autolabel(l1)
 autolabel(l2)
 plt.xlabel('Connection Type')
 plt.ylabel('Speed in Kbps')
-ax.set_title('SSH Data Transfer Speed by Connection Type')
+ax.set_title('SSH Data Transfer Speed by Connection Type - '+ test_name)
 
 # save output
 plt.savefig(path + "/charts/ssh_chart.png", dpi=200)
@@ -272,7 +274,7 @@ ax.legend([l1], ["Average Bandwidth"])
 autolabel(l1)
 plt.xlabel('Connection Type')
 plt.ylabel('Speed in KBps')
-ax.set_title('ROS Topic Bandwidth of Image Stream Topic by Connection Type')
+ax.set_title('ROS Topic Bandwidth of Image Stream Topic by Connection Type - '+ test_name)
 
 # save output
 plt.savefig(path + "/charts/rostopic_bw_chart.png", dpi=200)
