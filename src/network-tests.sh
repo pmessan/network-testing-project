@@ -139,7 +139,7 @@ echo "Test complete."
 echo -e "Starting iperf client UDP test...\nStarting iperf server on remote host..."
 
 #start iperf server in bg on remote host; timeout to prevent hanging
-[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  -D" || timeout 10s ssh $remote_host "iperf -s -u -D"## delete -V iff the host is not ipv6
+[ $ip == "ipv6" ] && timeout 10s ssh $remote_host "iperf -s -u -V  -D" || timeout 10s ssh $remote_host "iperf -s -u -D" ## delete -V iff the host is not ipv6
 
 echo "Running iperf client on local host..."
 
