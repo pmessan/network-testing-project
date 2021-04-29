@@ -91,6 +91,7 @@ if [ ! -d "../test-results/$trial_location/ping_test" ] ; then
   mkdir -p "../test-results/$trial_location/charts"
 fi
 
+# move to results directory
 cd ../test-results/$trial_location/
 
 # ping test
