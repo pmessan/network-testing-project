@@ -240,7 +240,7 @@ ax.legend((l1, l2), ("Average Upload Speed",
                      "Average Download Speed"))
 autolabel(l1)
 autolabel(l2)
-ax.set_ylim([0, 3200])
+ax.set_ylim([0, 5000])
 plt.xlabel('Connection Type')
 plt.ylabel('Speed in Kbps')
 ax.set_title('SSH Data Transfer Speed by Connection Type - '+ test_name)
