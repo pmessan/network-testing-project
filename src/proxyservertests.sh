@@ -9,6 +9,7 @@ remote_port="$4"
 trial_location="$5"
 
 ygg_host="$6"
+ygg_port="$7"
 
 
 # iperf tests
@@ -18,9 +19,9 @@ cd ../test-results/$trial_location
 
 iperf -c $remote_host -p $remote_port -t 30 -y c >> iperf_tcp_test/iperf_tcp_4-local.csv
 
-ssh $ygg_host "iperf -c $local_host -p $local_port -t 30 -y c >> iperf_tcp_4-remote.csv"
+ssh $ygg_host -p $ygg_port "iperf -c $local_host -p $local_port -t 30 -y c >> iperf_tcp_4-remote.csv"
 
-scp $ygg_host:~/iperf_tcp_4-remote.csv iperf_tcp_test/
+scp -P $ygg_port $ygg_host:~/iperf_tcp_4-remote.csv iperf_tcp_test/
 
 # write headers 
 
@@ -38,9 +39,9 @@ paste -d '\n' iperf_tcp_test/iperf_tcp_4-local.csv iperf_tcp_test/iperf_tcp_4-re
 
 iperf -c $remote_host -p $remote_port -t 30 -y c >> iperf_udp_test/iperf_udp_4-local.csv
 
-ssh $ygg_host "iperf -c $local_host -p $local_port -t 30 -y c >> iperf_udp_4-remote.csv"
+ssh $ygg_host -p $ygg_port "iperf -c $local_host -p $local_port -t 30 -y c >> iperf_udp_4-remote.csv"
 
-scp $ygg_host:~/iperf_udp_4-remote.csv iperf_udp_test/
+scp -P $ygg_port $ygg_host:~/iperf_udp_4-remote.csv iperf_udp_test/
 
 # write headers 
 
