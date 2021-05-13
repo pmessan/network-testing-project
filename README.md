@@ -1,6 +1,6 @@
 # Network Testing Project
 
-This repository contains the code, CSV data and graphs used to test the two meshnets, Husarnet, and remote .it for my bachelor thesis and project.
+This repository contains the code, CSV data and graphs used in the process of testing the two meshnets CJDNS and Yggdrasil, Husarnet, and remote .it for my bachelor thesis and project.
 The repo is organised as follows:
 * [src/](src/): The folder with the source code used for the tests ([network-test.sh](src/network-tests.sh)), as well as helper scripts such as:
     - [rostopic-bw-parser.py](src/rostopic-bw-parser.py): converts the output of the `rostopic bw` command to CSV format, 
