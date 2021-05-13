@@ -2,7 +2,7 @@
 # scp-speed-test.sh
 #
 # Usage:
-#   ./scp-speed-test.sh user@hostname [test file size in MBs]
+#   ./scp-speed-test.sh user@hostname port [test file size in MBs]
 #
 #############################################################
 

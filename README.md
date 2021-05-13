@@ -19,4 +19,22 @@ The repo is organised as follows:
 
 ## Commands Used
 
-- ``
+I used a map to represent the 4 approaches by numbers: 1=Yggdrasil, 2=CJDNS, 3=Husarnet, 4=remote.it. This map was used for the `$connection_method` variable, and in the file names in the various folders housing the individual test results.
+
+```bash
+./network-tests.sh user@remote-host user@local-host connection_method trial_location -t [ipv4/ipv6] # run network tests between current host and remote host
+```
+```bash 
+make run ARGS="../test-results/Accra,\ Ghana" # used to plot the graphs
+```
+```bash 
+./scp-speed-test.sh user@hostname [test file size in MBs]
+```
+```bash 
+# change to directory of test results for a particular test e.g. cd test-results/Accra,\ Ghana
+../../src/venv/bin/python3 ../../src/rostopic_bw-parser.py rostopic_bw_test/rostopic_bw_$connection_method-temp.txt | tail -n +2 >> rostopic_bw_testrostopic_bw_$connection_method.csv
+```
+
+More details about the code and the commands can be reveled upon close inspection of the files in their respective folders.
+
+Thanks for Viewing!
