@@ -31,6 +31,17 @@ x = list(range(4))  # 6 methods being tested
 
 plt.figure(figsize=(8.8, 5.5))
 
+# to make axes and writing white
+params = {"ytick.color" : "w",
+          "xtick.color" : "w",
+          "axes.labelcolor" : "w",
+          "axes.edgecolor" : "w",
+          "axes.titlecolor" : "w",
+          "text.color" : "w",
+          "axes.facecolor": "black"}
+plt.rcParams.update(params)
+
+
 def autolabel(rects):
     """Attach a text label above each bar in *rects*, displaying its height."""
     for rect in rects:
@@ -91,7 +102,7 @@ plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
 # save output
-plt.savefig(path + "/charts/iperf_tcp_chart.png", dpi=200)
+plt.savefig(path + "/charts/iperf_tcp_chart.png", dpi=200, transparent=True)
 
 # CLEANUP
 # drop the arrays with the iperf data
@@ -140,7 +151,7 @@ plt.ylabel('Speed in Mbps')
 plt.xlabel('Connection Type')
 
 # save output
-plt.savefig(path + "/charts/iperf_udp_chart.png", dpi=200)
+plt.savefig(path + "/charts/iperf_udp_chart.png", dpi=200, transparent=True)
 
 # CLEANUP
 # drop the arrays with the iperf data
@@ -194,7 +205,7 @@ plt.xlabel('Connection Type')
 plt.ylabel('Time in ms')
 
 #save output
-plt.savefig(path + "/charts/ping_chart.png", dpi=200)
+plt.savefig(path + "/charts/ping_chart.png", dpi=200, transparent=True)
 
 # CLEANUP
 # drop the arrays with the ping data
@@ -246,7 +257,7 @@ plt.ylabel('Speed in Kbps')
 ax.set_title('SSH Data Transfer Speed by Connection Type - '+ test_name)
 
 # save output
-plt.savefig(path + "/charts/ssh_chart.png", dpi=200)
+plt.savefig(path + "/charts/ssh_chart.png", dpi=200, transparent=True)
 
 print("ssh chart generated successfully!\nGenerating rostopic graphs...")
 
@@ -282,7 +293,7 @@ plt.ylabel('Speed in KBps')
 ax.set_title('ROS Topic Bandwidth of Image Stream Topic by Connection Type - '+ test_name)
 
 # save output
-plt.savefig(path + "/charts/rostopic_bw_chart.png", dpi=200)
+plt.savefig(path + "/charts/rostopic_bw_chart.png", dpi=200, transparent=True)
 
 print("Rostopic chart generated successfully!")
 
